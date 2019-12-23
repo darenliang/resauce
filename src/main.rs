@@ -1,13 +1,27 @@
-extern crate gtk;
 extern crate gio;
-extern crate gdk;
+extern crate gtk;
 
-pub mod ui;
+use gio::prelude::*;
+use gtk::prelude::*;
 
-use ui::App;
+use std::env::args;
+
+mod config;
+mod ui;
+
+fn build_ui(application: &gtk::Application) {
+    let app = ui::App::new(application);
+    app.window.show_all();
+}
 
 fn main() {
-    App::new()
-        .connect_events()
-        .then_execute();
+    let application =
+        gtk::Application::new(Some(config::info::APP_ID), Default::default())
+            .expect("Cannot initialize gtk application.");
+
+    application.connect_activate(|app| {
+        build_ui(app);
+    });
+
+    application.run(&args().collect::<Vec<_>>());
 }

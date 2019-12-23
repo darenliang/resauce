@@ -1,13 +1,17 @@
 use gtk::*;
 
-pub struct Content {
-    pub container: Label
-}
+use crate::ui::About;
+
+pub struct Content(pub Box);
 
 impl Content {
     pub fn new() -> Content {
-        let container = Label::new(Some("something"));
+        let content = Box::new(Orientation::Vertical, 0);
 
-        Content { container }
+        let about = About::new();
+
+        content.pack_start(&about.button, false, false, 0);
+
+        Content(content)
     }
 }
