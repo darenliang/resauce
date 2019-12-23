@@ -10,6 +10,7 @@
     <property name="website">https://github.com/darenliang/FileRenameUtility</property>
     <property name="website_label" translatable="yes">Project Website</property>
     <property name="authors">Daren Liang</property>
+    <property name="authors">George Lewis</property>
     <property name="logo_icon_name">image-missing</property>
     <property name="license_type">mit-x11</property>
     <child>
