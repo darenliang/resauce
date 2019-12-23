@@ -1,5 +1,5 @@
 [package]
-name = "gui_rust_test"
+name = "file_rename_tool"
 version = "0.0.1"
 authors = ["darenliang@outlook.com <darenliang@outlook.com>"]
 edition = "2018"
