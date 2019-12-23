@@ -52,7 +52,7 @@
     <columns>
       <!-- column-name Name -->
       <column type="gchararray"/>
-      <!-- column-name New Name -->
+      <!-- column-name NewName -->
       <column type="gchararray"/>
       <!-- column-name Size -->
       <column type="gchararray"/>
