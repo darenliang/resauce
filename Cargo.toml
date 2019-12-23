@@ -13,3 +13,6 @@ version = "0.8.0"
 
 [dependencies.gio]
 version = "0.8.0"
+
+[dependencies.gdk]
+version = "0.12.0"
