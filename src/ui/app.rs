@@ -4,7 +4,7 @@ use gdk::ModifierType;
 
 use super::Content;
 use super::app_info::*;
-use super::misc::*;
+use super::util::*;
 
 pub struct App {
     pub window: ApplicationWindow,
