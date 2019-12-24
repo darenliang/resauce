@@ -8,6 +8,7 @@ use std::env::args;
 
 mod config;
 mod ui;
+mod utils;
 
 fn build_ui(application: &gtk::Application) {
     let app = ui::App::new(application);

@@ -1,17 +1,23 @@
 use gtk::*;
 
-use crate::ui::About;
+use crate::ui::about::About;
+use crate::ui::menubar::MenuBar;
 
-pub struct Content(pub Box);
+pub struct Content {
+    pub v_box: Box,
+    pub accel_group: AccelGroup,
+}
 
 impl Content {
     pub fn new() -> Content {
-        let content = Box::new(Orientation::Vertical, 0);
+        let v_box = Box::new(Orientation::Vertical, 0);
 
-        let about = About::new();
+        let menu_bar = MenuBar::new();
 
-        content.pack_start(&about.button, false, false, 0);
+        let accel_group = menu_bar.accel_group;
 
-        Content(content)
+        v_box.pack_start(&menu_bar.menu_bar, false, false, 0);
+
+        Content { v_box, accel_group }
     }
 }

@@ -1,11 +1,9 @@
 use gtk::*;
+use glib::clone;
 
 use crate::config::info;
 
-pub struct About {
-    pub button: Button,
-    pub about_dialog: AboutDialog,
-}
+pub struct About(pub AboutDialog);
 
 
 impl About {
@@ -20,13 +18,11 @@ impl About {
         about_dialog.set_license_type(info::LICENSE);
         about_dialog.set_authors(info::AUTHORS);
 
-        let about_dialog_clone = about_dialog.clone();
+        button.connect_clicked(clone!(@weak about_dialog => move |_| {
+            about_dialog.run();
+            about_dialog.hide();
+        }));
 
-        button.connect_clicked(move |_| {
-            about_dialog_clone.run();
-            about_dialog_clone.hide();
-        });
-
-        About { button, about_dialog }
+        About(about_dialog)
     }
 }

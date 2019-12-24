@@ -2,7 +2,7 @@ use gtk::*;
 
 use crate::config::info;
 
-use super::Content;
+use crate::ui::content::Content;
 
 pub struct App {
     pub window: ApplicationWindow,
@@ -17,7 +17,8 @@ impl App {
 
         window.set_title(info::NAME);
         window.set_default_size(800, 600);
-        window.add(&content.0);
+        window.add_accel_group(&content.accel_group);
+        window.add(&content.v_box);
 
         App { window, content }
     }
