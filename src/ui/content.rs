@@ -1,6 +1,5 @@
 use gtk::*;
 
-use crate::ui::about::About;
 use crate::ui::menubar::MenuBar;
 
 pub struct Content {
