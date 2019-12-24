@@ -16,3 +16,6 @@ version = "0.8.0"
 
 [dependencies.gdk]
 version = "0.12.0"
+
+[dependencies.glib]
+version = "0.9.0"
