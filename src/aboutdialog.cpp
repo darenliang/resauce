@@ -14,6 +14,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     QString build("Built with Qt 5 on ");
 
+    // __DATE__ is a GNU compiler #define
     build.append(__DATE__);
 
     ui->buildLabel->setText(build);
