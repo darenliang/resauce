@@ -15,9 +15,9 @@ QIcon FileUtil::getIcon(QString file) {
 
 QIcon FileUtil::getIcon(QFileInfo& file) { return getIcon(file.filePath()); }
 
-qint32 FileUtil::getDirSize(QFileInfo& file) {
+qint64 FileUtil::getDirSize(QFileInfo& file) {
 
-    qint32 total = 0;
+    qint64 total = 0;
 
     if (file.isDir()) {
 
