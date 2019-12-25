@@ -11,9 +11,11 @@ class FileUtil
 
     public:
 
-    static QIcon getIcon(QString& file);
+    static QIcon getIcon(QString file);
 
     static QIcon getIcon(QFileInfo& file);
+
+    static qint32 getDirSize(QFileInfo& file);
 
 };
 

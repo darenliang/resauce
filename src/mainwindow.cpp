@@ -33,21 +33,23 @@ void MainWindow::on_actionAbout_triggered() {
 
 void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *parent = nullptr) {
 
-    qDebug() << info.path();
+    qDebug() << info.absoluteFilePath();
 
     auto path = (parent == nullptr) ? info.absoluteFilePath() : info.absoluteFilePath().remove(
             parent->absoluteFilePath());
 
     item->setText(0, path);
-    item->setIcon(0, FileUtil::getIcon(info.absoluteFilePath()));
+    item->setIcon(0, FileUtil::getIcon(info));
 
-    item->setText(2, QString::number(info.size()) + " bytes");
+    auto size = (info.size() == 0) ? "Unavailable" : QString::number(FileUtil::getDirSize(info) / 1000000.0, 'f', 2) + " MB"; // Bytes to MB, round to two places
+
+    item->setText(2, size);
     item->setText(3, info.birthTime().toLocalTime().toString(Qt::DateFormat::TextDate));
     item->setText(4, info.lastModified().toLocalTime().toString(Qt::DateFormat::TextDate));
 
     if (info.isDir()) {
 
-        QDirIterator it(info.absoluteFilePath());
+        QDirIterator it{info.absoluteFilePath(), QDir::NoDotAndDotDot|QDir::AllEntries};
 
         while (it.hasNext()) {
 
