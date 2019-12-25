@@ -28,7 +28,6 @@ void MainWindow::on_actionAbout_triggered() {
 
 }
 
-<<<<<<< HEAD
 void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info) {
 
     qDebug() << info.path();
