@@ -21,7 +21,7 @@ MainWindow::~MainWindow() {
 
 
 void MainWindow::on_actionQuit_triggered() {
-    qDebug() << "Saved Folder: " << State::getInstance().getFolderName();
+    qDebug() << "Saved Folder: " << State::getFolderName();
     QApplication::quit();
 }
 
@@ -69,8 +69,7 @@ void MainWindow::on_actionOpen_triggered() {
 
     QString folderName = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
 
-    State &state = State::getInstance();
-    state.setFolderName(folderName);
+    State::setFolderName(folderName);
 
     qDebug() << "Selected: " << folderName;
 

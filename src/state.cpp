@@ -1,10 +1,12 @@
 #include <QtCore/QString>
 #include "state.h"
 
+QString State::folderName;
+
 void State::setFolderName(QString &fName) {
     folderName = fName;
 }
 
-QString State::getFolderName() {
+const QString State::getFolderName() {
     return folderName;
 }

@@ -4,21 +4,17 @@
 
 class State {
 
-    QString folderName;
+    static QString folderName;
 
 public:
-    static State &getInstance() {
-        static State instance;
-        return instance;
-    }
 
     State(State const &) = delete;
 
     void operator=(State const &) = delete;
 
-    void setFolderName(QString &fName);
+    static void setFolderName(QString &fName);
 
-    QString getFolderName();
+    static const QString getFolderName();
 
 private:
     State() {}
