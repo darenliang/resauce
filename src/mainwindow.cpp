@@ -44,7 +44,7 @@ void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *pare
     auto size = (info.size() == 0) ? "Unavailable" : QString::number(FileUtil::getDirSize(info) / 1000000.0, 'f', 2) + " MB"; // Bytes to MB, round to two places
 
     item->setText(2, size);
-    item->setText(3, info.birthTime().toLocalTime().toString(Qt::DateFormat::TextDate));
+    item->setText(3, (info.birthTime().isValid()) ? info.birthTime().toLocalTime().toString(Qt::DateFormat::TextDate) : "Unavailable");
     item->setText(4, info.lastModified().toLocalTime().toString(Qt::DateFormat::TextDate));
 
     if (info.isDir()) {
