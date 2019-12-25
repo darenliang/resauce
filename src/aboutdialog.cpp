@@ -11,6 +11,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->setupUi(this);
     ui->nameLabel->setText(APP_NAME);
     ui->versionLabel->setText(VERSION);
+    ui->license->setText(LICENSE);
 
     QString build("Built with Qt 5 on ");
 

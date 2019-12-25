@@ -9,6 +9,7 @@ namespace Info {
     const QString VERSION = "0.0.1 Pre-Alpha";
     const QString AUTHORS = "Daren Liang, George Lewis";
     const QString WEBSITE = "https://github.com/darenliang/resauce";
+    const QString LICENSE = "[LICENSE TO-DO]";
 
 }
 
