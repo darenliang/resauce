@@ -7,6 +7,7 @@
 #include <QFileSystemModel>
 #include <QFileInfo>
 #include <QDateTime>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,18 +34,46 @@ void MainWindow::on_actionAbout_triggered()
 
 }
 
+void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info) {
+
+    qDebug() << info.path();
+
+    item->setText(0, info.absoluteFilePath());
+    item->setIcon(0, FileUtil::getIcon(info.absoluteFilePath()));
+
+    item->setText(2, QString::number(info.size()) + " bytes");
+    item->setText(3, info.birthTime().toLocalTime().toString(Qt::DateFormat::TextDate));
+    item->setText(4, info.lastModified().toLocalTime().toString(Qt::DateFormat::TextDate));
+
+    if (info.isDir()) {
+
+        QDirIterator it(info.absoluteFilePath());
+
+        while (it.hasNext()) {
+
+            QFileInfo f{it.next()};
+
+            if (f.isDir()) {
+                continue;
+            }
+
+            setItem(new QTreeWidgetItem(item), f);
+
+        }
+
+    }
+
+}
+
 void MainWindow::on_actionOpen_triggered()
 {
 
     QString folderName = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
 
+    qDebug() << "Selected: " << folderName;
+
     QFileInfo inf{folderName};
 
-    auto item = new QTreeWidgetItem(ui->tree);
-    item->setText(0, folderName);
-    item->setIcon(0, FileUtil::getIcon(folderName));
-    item->setText(2, QString::number(inf.size()) + " bytes");
-    item->setText(3, inf.created().toLocalTime().toString(Qt::DateFormat::TextDate));
-    item->setText(4, inf.lastModified().toLocalTime().toString(Qt::DateFormat::TextDate));
+    setItem(new QTreeWidgetItem(ui->tree), inf);
 
 }
