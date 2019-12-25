@@ -28,11 +28,13 @@ void MainWindow::on_actionAbout_triggered() {
 
 }
 
-void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info) {
+void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo* parent = nullptr) {
 
     qDebug() << info.path();
 
-    item->setText(0, info.absoluteFilePath());
+    auto path = (parent == nullptr) ? info.absoluteFilePath() : info.absoluteFilePath().remove(parent->absoluteFilePath());
+
+    item->setText(0, path);
     item->setIcon(0, FileUtil::getIcon(info.absoluteFilePath()));
 
     item->setText(2, QString::number(info.size()) + " bytes");
@@ -51,7 +53,7 @@ void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info) {
                 continue;
             }
 
-            setItem(new QTreeWidgetItem(item), f);
+            setItem(new QTreeWidgetItem(item), f, &info);
 
         }
 
