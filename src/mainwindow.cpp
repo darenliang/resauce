@@ -9,31 +9,26 @@
 #include <QDateTime>
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
 
-void MainWindow::on_actionQuit_triggered()
-{
+void MainWindow::on_actionQuit_triggered() {
     QApplication::quit();
 }
 
-void MainWindow::on_actionAbout_triggered()
-{
+void MainWindow::on_actionAbout_triggered() {
     AboutDialog aboutDialog;
     aboutDialog.exec();
 
 }
 
+<<<<<<< HEAD
 void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info) {
 
     qDebug() << info.path();

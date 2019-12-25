@@ -4,10 +4,7 @@
 
 using namespace Info;
 
-AboutDialog::AboutDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::AboutDialog)
-{
+AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AboutDialog) {
     ui->setupUi(this);
     ui->nameLabel->setText(APP_NAME);
     ui->versionLabel->setText(VERSION);
@@ -21,10 +18,8 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->buildLabel->setText(build);
     ui->authorLabel->setText("Authors: " + AUTHORS);
     ui->website->setText("Website: <a href=\"" + WEBSITE + "\">" + WEBSITE + "</a>");
-
 }
 
-AboutDialog::~AboutDialog()
-{
+AboutDialog::~AboutDialog() {
     delete ui;
 }
