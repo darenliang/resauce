@@ -1,5 +1,7 @@
 #include "fileutil.h"
 
+#include <QDebug>
+
 // Instantiate
 QFileSystemModel FileUtil::model;
 
@@ -11,4 +13,30 @@ QIcon FileUtil::getIcon(QString file) {
 
 }
 
-QIcon FileUtil::getIcon(QFileInfo file) { return getIcon(file.filePath()); }
+QIcon FileUtil::getIcon(QFileInfo& file) { return getIcon(file.filePath()); }
+
+qint32 FileUtil::getDirSize(QFileInfo& file) {
+
+    qint32 total = 0;
+
+    if (file.isDir()) {
+
+        QDirIterator iter{file.absoluteFilePath(), QDir::NoDotAndDotDot|QDir::AllEntries};
+
+        while (iter.hasNext()) {
+
+            QFileInfo info{iter.next()};
+
+            qDebug() << "Cur: " << file.absoluteFilePath() << " Scan: " << iter.next();
+
+            total = total + getDirSize(info);
+
+        }
+
+    } else {
+        total = file.size();
+    }
+
+    return total;
+
+}

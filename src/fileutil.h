@@ -13,7 +13,9 @@ class FileUtil
 
     static QIcon getIcon(QString file);
 
-    static QIcon getIcon(QFileInfo file);
+    static QIcon getIcon(QFileInfo& file);
+
+    static qint32 getDirSize(QFileInfo& file);
 
 };
 
