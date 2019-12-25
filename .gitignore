@@ -15,3 +15,5 @@ Cargo.lock
 # VSCode files
 /.vscode
 build-resauce-Desktop-Debug/
+
+build-resauce-Desktop-Release/
