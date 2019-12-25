@@ -27,7 +27,7 @@
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <item>
-       <widget class="QTreeWidget" name="treeWidget">
+       <widget class="QTreeWidget" name="tree">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -96,7 +96,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
