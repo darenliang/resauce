@@ -3,7 +3,7 @@
 // Instantiate
 QFileSystemModel FileUtil::model;
 
-QIcon FileUtil::getIcon(QString file) {
+QIcon FileUtil::getIcon(QString& file) {
 
     auto dex = model.index(file);
 
@@ -11,4 +11,4 @@ QIcon FileUtil::getIcon(QString file) {
 
 }
 
-QIcon FileUtil::getIcon(QFileInfo file) { return getIcon(file.filePath()); }
+QIcon FileUtil::getIcon(QFileInfo& file) { return getIcon(file.filePath()); }
