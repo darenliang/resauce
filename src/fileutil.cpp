@@ -11,4 +11,4 @@ QIcon FileUtil::getIcon(QString file) {
 
 }
 
-QIcon FileUtil::getIcon(QFileInfo file) { return getIcon(file.path()); }
+QIcon FileUtil::getIcon(QFileInfo file) { return getIcon(file.filePath()); }
