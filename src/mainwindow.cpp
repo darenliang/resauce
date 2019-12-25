@@ -76,7 +76,7 @@ void MainWindow::setFolder(const QString &folderName) {
 
     QFileInfo inf{folderName};
 
-    setItem(new QTreeWidgetItem(ui->tree), inf);
+    setItem(new QTreeWidgetItem(ui->fileTree), inf);
 }
 
 void MainWindow::on_actionOpen_triggered() {
