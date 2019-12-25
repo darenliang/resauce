@@ -1,5 +1,6 @@
 #ifndef STATE_H
 #define STATE_H
+
 #include <QtCore/QString>
 
 class State {
@@ -8,16 +9,9 @@ class State {
 
 public:
 
-    State(State const &) = delete;
+    static const QString &getFolderName();
 
-    void operator=(State const &) = delete;
-
-    static void setFolderName(QString &fName);
-
-    static const QString& getFolderName();
-
-private:
-    State() {}
+    static void setFolderName(const QString &fName);
 };
 
 
