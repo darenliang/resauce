@@ -41,15 +41,17 @@ void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *pare
     item->setText(0, path);
     item->setIcon(0, FileUtil::getIcon(info));
 
-    auto size = (info.size() == 0) ? "Unavailable" : QString::number(FileUtil::getDirSize(info) / 1000000.0, 'f', 2) + " MB"; // Bytes to MB, round to two places
+    auto size = (info.size() == 0) ? "Unavailable" : QString::number(FileUtil::getDirSize(info) / 1000000.0, 'f', 2) +
+                                                     " MB"; // Bytes to MB, round to two places
 
     item->setText(2, size);
-    item->setText(3, (info.birthTime().isValid()) ? info.birthTime().toLocalTime().toString(Qt::DateFormat::TextDate) : "Unavailable");
+    item->setText(3, (info.birthTime().isValid()) ? info.birthTime().toLocalTime().toString(Qt::DateFormat::TextDate)
+                                                  : "Unavailable");
     item->setText(4, info.lastModified().toLocalTime().toString(Qt::DateFormat::TextDate));
 
     if (info.isDir()) {
 
-        QDirIterator it{info.absoluteFilePath(), QDir::NoDotAndDotDot|QDir::AllEntries};
+        QDirIterator it{info.absoluteFilePath(), QDir::NoDotAndDotDot | QDir::AllEntries};
 
         while (it.hasNext()) {
 
@@ -67,14 +69,7 @@ void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *pare
 
 }
 
-void MainWindow::on_actionOpen_triggered() {
-
-    QString folderName = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
-
-    if (folderName == nullptr){
-        return;
-    }
-
+void MainWindow::setFolder(const QString &folderName) {
     State::setFolderName(folderName);
 
     qDebug() << "Selected: " << folderName;
@@ -82,5 +77,16 @@ void MainWindow::on_actionOpen_triggered() {
     QFileInfo inf{folderName};
 
     setItem(new QTreeWidgetItem(ui->tree), inf);
+}
+
+void MainWindow::on_actionOpen_triggered() {
+
+    QString folderName = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
+
+    if (folderName == nullptr) {
+        return;
+    }
+
+    setFolder(folderName);
 
 }

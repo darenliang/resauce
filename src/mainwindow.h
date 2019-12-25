@@ -27,5 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     void setItem(QTreeWidgetItem* item, QFileInfo& info, QFileInfo* parent);
+
+    void setFolder(const QString& folderName);
 };
 #endif // MAINWINDOW_H
