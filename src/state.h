@@ -1,5 +1,6 @@
 #ifndef STATE_H
 #define STATE_H
+#include <QtCore/QString>
 
 class State {
 
