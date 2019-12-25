@@ -17,3 +17,6 @@ Cargo.lock
 build-resauce-Desktop-Debug/
 
 build-resauce-Desktop-Release/
+
+# User specific Qt file
+resauce.pro.user
