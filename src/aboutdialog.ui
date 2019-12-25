@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>About Resauce</string>
   </property>
   <widget class="QLabel" name="nameLabel">
    <property name="geometry">
