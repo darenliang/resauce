@@ -71,6 +71,10 @@ void MainWindow::on_actionOpen_triggered() {
 
     QString folderName = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
 
+    if (folderName == nullptr){
+        return;
+    }
+
     State::setFolderName(folderName);
 
     qDebug() << "Selected: " << folderName;
