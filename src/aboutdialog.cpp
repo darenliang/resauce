@@ -19,7 +19,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     ui->buildLabel->setText(build);
     ui->authorLabel->setText("Authors: " + AUTHORS);
-    ui->website->setText("Website: " + WEBSITE);
+    ui->website->setText("Website: <a href=\"" + WEBSITE + "\">" + WEBSITE + "</a>");
 
 }
 
