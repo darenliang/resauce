@@ -14,16 +14,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 add_executable(resauce
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        aboutdialog.cpp
-        aboutdialog.h
-        aboutdialog.ui
-        fileutil.cpp
-        fileutil.h
-        info.h
+        src/main.cpp
+        src/mainwindow.cpp
+        src/mainwindow.h
+        src/mainwindow.ui
+        src/aboutdialog.cpp
+        src/aboutdialog.h
+        src/aboutdialog.ui
+        src/fileutil.cpp
+        src/fileutil.h
+        src/info.h
         )
 
 target_link_libraries(resauce PRIVATE Qt5::Widgets)
