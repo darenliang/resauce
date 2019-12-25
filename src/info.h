@@ -3,6 +3,6 @@
 
 #define APP_NAME "Resauce"
 #define VERSION "0.0.1 Pre-Alpha"
-#define AUTHORS "Daren Liang, George Lewis"
+#define AUTHORS "Daren Liang\nGeorge Lewis"
 
 #endif // INFO_H
