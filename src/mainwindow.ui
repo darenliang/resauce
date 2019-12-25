@@ -25,6 +25,9 @@
         <property name="enabled">
          <bool>true</bool>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <column>
          <property name="text">
           <string>Name</string>

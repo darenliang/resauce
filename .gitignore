@@ -14,9 +14,12 @@ Cargo.lock
 
 # VSCode files
 /.vscode
-build-resauce-Desktop-Debug/
 
 build-resauce-Desktop-Release/
 
+build-resauce-Desktop-Debug/
+
 # User specific Qt file
 resauce.pro.user
+
+build/
