@@ -14,7 +14,7 @@ public:
 
     static void setFolderName(QString &fName);
 
-    static const QString getFolderName();
+    static const QString& getFolderName();
 
 private:
     State() {}

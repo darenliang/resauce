@@ -3,10 +3,10 @@
 
 QString State::folderName;
 
-void State::setFolderName(QString &fName) {
+void State::setFolderName(QString& fName) {
     folderName = fName;
 }
 
-const QString State::getFolderName() {
+const QString& State::getFolderName() {
     return folderName;
 }
