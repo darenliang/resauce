@@ -19,22 +19,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="logo">
-   <property name="geometry">
-    <rect>
-     <x>136</x>
-     <y>40</y>
-     <width>128</width>
-     <height>128</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>logo.png</pixmap>
-   </property>
-  </widget>
   <widget class="QLabel" name="nameLabel">
    <property name="geometry">
     <rect>
