@@ -2,12 +2,14 @@
 #include "./ui_mainwindow.h"
 #include "aboutdialog.h"
 #include "fileutil.h"
+#include "state.h"
 
 #include <QFileDialog>
 #include <QFileSystemModel>
 #include <QFileInfo>
 #include <QDateTime>
 #include <QDebug>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -19,6 +21,7 @@ MainWindow::~MainWindow() {
 
 
 void MainWindow::on_actionQuit_triggered() {
+    qDebug() << "Saved Folder: " << State::getInstance().getFolderName();
     QApplication::quit();
 }
 
@@ -28,11 +31,12 @@ void MainWindow::on_actionAbout_triggered() {
 
 }
 
-void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo* parent = nullptr) {
+void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *parent = nullptr) {
 
     qDebug() << info.path();
 
-    auto path = (parent == nullptr) ? info.absoluteFilePath() : info.absoluteFilePath().remove(parent->absoluteFilePath());
+    auto path = (parent == nullptr) ? info.absoluteFilePath() : info.absoluteFilePath().remove(
+            parent->absoluteFilePath());
 
     item->setText(0, path);
     item->setIcon(0, FileUtil::getIcon(info.absoluteFilePath()));
@@ -61,10 +65,12 @@ void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo* pare
 
 }
 
-void MainWindow::on_actionOpen_triggered()
-{
+void MainWindow::on_actionOpen_triggered() {
 
     QString folderName = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
+
+    State &state = State::getInstance();
+    state.setFolderName(folderName);
 
     qDebug() << "Selected: " << folderName;
 
