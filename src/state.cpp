@@ -4,10 +4,10 @@
 QFileSystemModel State::directoryModel;
 QFileSystemModel State::fileList;
 
-QFileSystemModel &State::getDirectoryModel() {
+const QFileSystemModel &State::getDirectoryModel() {
     return directoryModel;
 }
 
-QFileSystemModel &State::getFileList() {
+const QFileSystemModel &State::getFileList() {
     return fileList;
 }

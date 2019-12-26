@@ -8,11 +8,11 @@ class State {
     static QFileSystemModel directoryModel;
     static QFileSystemModel fileList;
 public:
-    static QFileSystemModel &getDirectoryModel();
+    static const QFileSystemModel &getDirectoryModel();
 
     static void setDirectoryModel(const QString &fPath);
 
-    static QFileSystemModel &getFileList();
+    static const QFileSystemModel &getFileList();
 
     static void setFileList(const QString &fPath);
 };
