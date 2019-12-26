@@ -111,18 +111,18 @@ void MainWindow::on_dirView_clicked(const QModelIndex &index) {
     ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalFilePath()));
 }
 
-void MainWindow::on_rootFolderSearchButton_clicked()
-{
+void MainWindow::on_rootFolderSearchButton_clicked() {
     QString folderPath = ui->rootFolderSearch->text();
+    if (folderPath.length() == 0) {
+        return;
+    }
     setDirectory(folderPath);
 }
 
-void MainWindow::on_rootFolderSearch_returnPressed()
-{
+void MainWindow::on_rootFolderSearch_returnPressed() {
     ui->rootFolderSearchButton->click();
 }
 
-void MainWindow::on_openFolderButton_clicked()
-{
+void MainWindow::on_openFolderButton_clicked() {
     ui->actionOpen->trigger();
 }
