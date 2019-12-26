@@ -32,13 +32,12 @@ private slots:
 
     void on_openFolderButton_clicked();
 
+    void dirView_selection_change(const QModelIndex &current, const QModelIndex& previous);
+
 private:
     Ui::MainWindow *ui;
 
     AboutDialog about;
-
-    // Used as slot
-    void on_dirView_selection_change(const QModelIndex &current, const QModelIndex& previous);
 
     void setItem(QTreeWidgetItem* item, QFileInfo& info, QFileInfo* parent);
 

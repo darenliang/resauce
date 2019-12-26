@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     setDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
 
     // Make ui reactive to keyboard and mouse
-    connect(ui->dirView->selectionModel(), &QItemSelectionModel::currentChanged, this, &MainWindow::on_dirView_selection_change);
+    connect(ui->dirView->selectionModel(), &QItemSelectionModel::currentChanged, this, &MainWindow::dirView_selection_change);
 }
 
 MainWindow::~MainWindow() {
@@ -110,7 +110,7 @@ void MainWindow::on_actionOpen_triggered() {
     setDirectory(folderPath);
 }
 
-void MainWindow::on_dirView_selection_change(const QModelIndex &current, const QModelIndex &previous) {
+void MainWindow::dirView_selection_change(const QModelIndex &current, const QModelIndex &previous) {
     QFileSystemModel &fileList = State::getFileList();
     fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
     ui->fileView->setModel(&fileList);
