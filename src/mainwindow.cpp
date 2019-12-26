@@ -98,3 +98,9 @@ void MainWindow::on_dirView_customContextMenuRequested(const QPoint &pos) {
         }
     }
 }
+
+void MainWindow::on_actionBack_triggered() {
+    QDir currDir = QDir(State::getDirectoryModel().rootPath());
+    currDir.cdUp();
+    setDirectory(currDir.canonicalPath());
+}

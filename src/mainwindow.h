@@ -32,6 +32,8 @@ private slots:
 
     void on_dirView_customContextMenuRequested(const QPoint &pos);
 
+    void on_actionBack_triggered();
+
 private:
     Ui::MainWindow *ui;
 

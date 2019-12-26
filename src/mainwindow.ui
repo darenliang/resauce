@@ -40,6 +40,16 @@
          </widget>
         </item>
         <item>
+         <widget class="QToolButton" name="backButton">
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="go-previous"/>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLineEdit" name="rootFolderSearch">
           <property name="placeholderText">
            <string>Root Folder</string>
@@ -209,6 +219,14 @@
     <string>About</string>
    </property>
   </action>
+  <action name="actionBack">
+   <property name="icon">
+    <iconset theme="go-previous"/>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -220,6 +238,22 @@
    <hints>
     <hint type="sourcelabel">
      <x>22</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>backButton</sender>
+   <signal>clicked()</signal>
+   <receiver>actionBack</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>55</x>
      <y>52</y>
     </hint>
     <hint type="destinationlabel">
