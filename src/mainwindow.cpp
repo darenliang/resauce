@@ -12,7 +12,7 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    ui->lineEdit->setFocus();
+    ui->rootFolderSearch->setFocus();
 }
 
 MainWindow::~MainWindow() {
@@ -86,7 +86,9 @@ bool MainWindow::setDirectory(const QString &folderPath) {
     QFileSystemModel &directoryModel = State::getDirectoryModel();
     directoryModel.setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
     ui->dirView->setModel(&directoryModel);
-    ui->dirView->setRootIndex(directoryModel.setRootPath(pathDir.canonicalPath()));
+    QString path = pathDir.canonicalPath();
+    ui->dirView->setRootIndex(directoryModel.setRootPath(path));
+    ui->rootFolderSearch->setText(path);
     for (int i = 1; i < directoryModel.columnCount(); i++) {
         ui->dirView->hideColumn(i);
     }
@@ -101,13 +103,25 @@ void MainWindow::on_actionOpen_triggered() {
     setDirectory(folderPath);
 }
 
-void MainWindow::on_toolButton_clicked() {
-    ui->actionOpen->trigger();
-}
-
 void MainWindow::on_dirView_clicked(const QModelIndex &index) {
     QFileSystemModel &fileList = State::getFileList();
     fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
     ui->fileView->setModel(&fileList);
     ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalPath()));
+}
+
+void MainWindow::on_rootFolderSearchButton_clicked()
+{
+    QString folderPath = ui->rootFolderSearch->text();
+    setDirectory(folderPath);
+}
+
+void MainWindow::on_rootFolderSearch_returnPressed()
+{
+    ui->rootFolderSearchButton->click();
+}
+
+void MainWindow::on_openFolderButton_clicked()
+{
+    ui->actionOpen->trigger();
 }
