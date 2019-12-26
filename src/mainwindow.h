@@ -26,11 +26,9 @@ private slots:
 
     void on_actionOpen_triggered();
 
-    void on_rootFolderSearchButton_clicked();
-
-    void on_rootFolderSearch_returnPressed();
-
     void dirView_selection_change(const QModelIndex &current);
+
+    void on_rootFolderSearch_textEdited(const QString &folderPath);
 
 private:
     Ui::MainWindow *ui;
@@ -39,6 +37,8 @@ private:
 
     void setItem(QTreeWidgetItem* item, QFileInfo& info, QFileInfo* parent);
 
-    bool setDirectory(const QString &folderPath);
+    bool setDirectory(const QString &folderPath, bool manual);
+
+    void resetDirectory(bool manual);
 };
 #endif // MAINWINDOW_H

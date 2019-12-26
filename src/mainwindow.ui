@@ -46,19 +46,6 @@
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="rootFolderSearchButton">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Go</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item>

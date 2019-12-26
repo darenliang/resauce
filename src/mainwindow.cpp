@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->rootFolderSearch->setFocus();
     // Set default directory to be the user's home
     // This call is platform independent
-    setDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
+    resetDirectory(false);
 
     // Make ui reactive to keyboard and mouse
     connect(ui->dirView->selectionModel(), &QItemSelectionModel::currentChanged, this,
@@ -25,6 +25,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::resetDirectory(bool manual = false) {
+    MainWindow::setDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation), manual);
 }
 
 
@@ -36,7 +40,7 @@ void MainWindow::on_actionAbout_triggered() {
     about.exec();
 }
 
-bool MainWindow::setDirectory(const QString &folderPath) {
+bool MainWindow::setDirectory(const QString &folderPath, bool manual = false) {
     const QDir pathDir(folderPath);
     if (!pathDir.exists()) {
         return false;
@@ -47,7 +51,9 @@ bool MainWindow::setDirectory(const QString &folderPath) {
     ui->dirView->setModel(&directoryModel);
     QString path = pathDir.canonicalPath();
     ui->dirView->setRootIndex(directoryModel.setRootPath(path));
-    ui->rootFolderSearch->setText(path);
+    if (!manual) {
+        ui->rootFolderSearch->setText(path);
+    }
     for (int i = 1; i < directoryModel.columnCount(); i++) {
         ui->dirView->hideColumn(i);
     }
@@ -69,15 +75,12 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
     ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(current).canonicalFilePath()));
 }
 
+void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath)
+{
 
-void MainWindow::on_rootFolderSearchButton_clicked() {
-    QString folderPath = ui->rootFolderSearch->text();
     if (folderPath.isEmpty()) {
+        resetDirectory(true);
         return;
     }
-    setDirectory(folderPath);
-}
-
-void MainWindow::on_rootFolderSearch_returnPressed() {
-    ui->rootFolderSearchButton->click();
+    setDirectory(folderPath, true);
 }
