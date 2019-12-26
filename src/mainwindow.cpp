@@ -96,7 +96,7 @@ bool MainWindow::setDirectory(const QString &folderPath) {
 }
 
 void MainWindow::on_actionOpen_triggered() {
-    QString folderPath = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
+    QString folderPath = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::homePath());
     if (folderPath == nullptr) {
         return;
     }
@@ -107,7 +107,8 @@ void MainWindow::on_dirView_clicked(const QModelIndex &index) {
     QFileSystemModel &fileList = State::getFileList();
     fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
     ui->fileView->setModel(&fileList);
-    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalPath()));
+    qDebug() << State::getDirectoryModel().fileInfo(index).canonicalFilePath();
+    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalFilePath()));
 }
 
 void MainWindow::on_rootFolderSearchButton_clicked()
