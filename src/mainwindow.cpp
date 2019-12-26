@@ -40,6 +40,7 @@ bool MainWindow::setDirectory(const QString &folderPath) {
     if (!pathDir.exists()) {
         return false;
     }
+    // Copy!
     QFileSystemModel &directoryModel = State::getDirectoryModel();
     directoryModel.setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
     ui->dirView->setModel(&directoryModel);
