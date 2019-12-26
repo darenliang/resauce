@@ -72,7 +72,7 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
 
 void MainWindow::on_rootFolderSearchButton_clicked() {
     QString folderPath = ui->rootFolderSearch->text();
-    if (folderPath.length() == 0) {
+    if (folderPath.isEmpty()) {
         return;
     }
     setDirectory(folderPath);
