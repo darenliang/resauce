@@ -29,7 +29,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QToolButton" name="toolButton">
+         <widget class="QToolButton" name="openFolderButton">
           <property name="text">
            <string>...</string>
           </property>
@@ -39,10 +39,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="rootFolderSearch">
+          <property name="placeholderText">
+           <string>Root Folder</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="rootFolderSearchButton">
           <property name="maximumSize">
            <size>
             <width>40</width>
@@ -107,9 +111,9 @@
            <pointsize>9</pointsize>
           </font>
          </property>
-         <property name="focusPolicy">
-          <enum>Qt::StrongFocus</enum>
-         </property>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
         </widget>
        </widget>
       </item>
