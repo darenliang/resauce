@@ -61,7 +61,7 @@ void MainWindow::on_actionOpen_triggered() {
     setDirectory(folderPath);
 }
 
-void MainWindow::dirView_selection_change(const QModelIndex &current, const QModelIndex &previous) {
+void MainWindow::dirView_selection_change(const QModelIndex &current) {
     QFileSystemModel &fileList = State::getFileList();
     fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
     ui->fileView->setModel(&fileList);

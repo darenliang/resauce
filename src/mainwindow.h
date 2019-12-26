@@ -32,7 +32,7 @@ private slots:
 
     void on_openFolderButton_clicked();
 
-    void dirView_selection_change(const QModelIndex &current, const QModelIndex& previous);
+    void dirView_selection_change(const QModelIndex &current);
 
 private:
     Ui::MainWindow *ui;
