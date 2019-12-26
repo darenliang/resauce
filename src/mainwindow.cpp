@@ -12,10 +12,14 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
     ui->rootFolderSearch->setFocus();
     // Set default directory to be the user's home
     // This call is platform independent
     setDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
+
+    // Make ui reactive to keyboard and mouse
+    connect(ui->dirView->selectionModel(), &QItemSelectionModel::currentChanged, this, &MainWindow::on_dirView_selection_change);
 }
 
 MainWindow::~MainWindow() {
@@ -106,13 +110,15 @@ void MainWindow::on_actionOpen_triggered() {
     setDirectory(folderPath);
 }
 
-void MainWindow::on_dirView_clicked(const QModelIndex &index) {
+void MainWindow::on_dirView_selection_change(const QModelIndex &current, const QModelIndex &previous) {
     QFileSystemModel &fileList = State::getFileList();
     fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
     ui->fileView->setModel(&fileList);
-    qDebug() << State::getDirectoryModel().fileInfo(index).canonicalFilePath();
-    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalFilePath()));
+    qDebug() << State::getDirectoryModel().fileInfo(current).canonicalFilePath();
+    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(current).canonicalFilePath()));
 }
+
+
 
 void MainWindow::on_rootFolderSearchButton_clicked() {
     QString folderPath = ui->rootFolderSearch->text();
