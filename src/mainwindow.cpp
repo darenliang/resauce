@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // Make ui reactive to keyboard and mouse
     connect(ui->dirView->selectionModel(), &QItemSelectionModel::currentChanged, this, &MainWindow::dirView_selection_change);
-//    connect(ui->dirView, &QTreeView::keyPressEvent, ui->dirView, [](x){});
 }
 
 MainWindow::~MainWindow() {
