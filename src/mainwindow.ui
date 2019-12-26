@@ -68,6 +68,11 @@
            <height>0</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="headerHidden">
           <bool>true</bool>
          </property>
@@ -87,6 +92,11 @@
            <width>200</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
          </property>
          <property name="focusPolicy">
           <enum>Qt::StrongFocus</enum>
