@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "aboutdialog.h"
+
 #include <QMainWindow>
 #include <QTreeWidgetItem>
 #include <QFileInfo>
@@ -30,6 +32,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    AboutDialog about;
+
     void setItem(QTreeWidgetItem* item, QFileInfo& info, QFileInfo* parent);
 
     void setFolder(const QString& folderName);

@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "aboutdialog.h"
 #include "fileutil.h"
 #include "state.h"
 
@@ -26,8 +25,7 @@ void MainWindow::on_actionQuit_triggered() {
 }
 
 void MainWindow::on_actionAbout_triggered() {
-    AboutDialog aboutDialog;
-    aboutDialog.exec();
+    about.exec();
 }
 
 void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *parent = nullptr) {
