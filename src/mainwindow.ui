@@ -74,6 +74,9 @@
            <pointsize>9</pointsize>
           </font>
          </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
          <property name="headerHidden">
           <bool>true</bool>
          </property>

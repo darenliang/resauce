@@ -75,12 +75,26 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
     ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(current).canonicalFilePath()));
 }
 
-void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath)
-{
-
+void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath) {
     if (folderPath.isEmpty()) {
         resetDirectory(true);
         return;
     }
     setDirectory(folderPath, true);
+}
+
+void MainWindow::on_dirView_customContextMenuRequested(const QPoint &pos) {
+    QModelIndex index = ui->dirView->indexAt(pos);
+    if (!index.isValid()) {
+        return;
+    }
+    QMenu contextMenu;
+    contextMenu.addAction("Set Root");
+    QAction *contextAction = contextMenu.exec(ui->dirView->mapToGlobal(pos));
+
+    if (contextAction) {
+        if (contextAction->text().contains("Set Root")) {
+            setDirectory(State::getDirectoryModel().fileInfo(index).canonicalFilePath());
+        }
+    }
 }

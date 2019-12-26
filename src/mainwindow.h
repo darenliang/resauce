@@ -30,6 +30,8 @@ private slots:
 
     void on_rootFolderSearch_textEdited(const QString &folderPath);
 
+    void on_dirView_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::MainWindow *ui;
 
