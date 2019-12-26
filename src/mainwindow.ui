@@ -34,7 +34,8 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset theme="folder-open"/>
+           <iconset theme="folder-open">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -174,6 +175,9 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset theme="folder-open"/>
+   </property>
    <property name="text">
     <string>Open</string>
    </property>
@@ -182,6 +186,9 @@
    </property>
   </action>
   <action name="actionQuit">
+   <property name="icon">
+    <iconset theme="application-exit"/>
+   </property>
    <property name="text">
     <string>Quit</string>
    </property>
@@ -190,6 +197,9 @@
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset theme="help-about"/>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
