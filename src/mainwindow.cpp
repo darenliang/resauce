@@ -21,14 +21,12 @@ MainWindow::~MainWindow() {
 
 
 void MainWindow::on_actionQuit_triggered() {
-    qDebug() << "Saved Folder: " << State::getFolderName();
     QApplication::quit();
 }
 
 void MainWindow::on_actionAbout_triggered() {
     AboutDialog aboutDialog;
     aboutDialog.exec();
-
 }
 
 void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *parent = nullptr) {
@@ -69,8 +67,9 @@ void MainWindow::setItem(QTreeWidgetItem *item, QFileInfo &info, QFileInfo *pare
 
 }
 
+/*
 void MainWindow::setFolder(const QString &folderName) {
-    State::setFolderName(folderName);
+    State::setFolderPath(folderName);
 
     qDebug() << "Selected: " << folderName;
 
@@ -78,15 +77,31 @@ void MainWindow::setFolder(const QString &folderName) {
 
     setItem(new QTreeWidgetItem(ui->fileTree), inf);
 }
+ */
+
+bool MainWindow::setDirectory(const QString &folderPath) {
+    const QDir pathDir(folderPath);
+    if (!pathDir.exists()) {
+        return false;
+    }
+    QFileSystemModel &directoryModel = State::getDirectoryModel();
+    directoryModel.setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+    ui->dirView->setModel(&directoryModel);
+    ui->dirView->setRootIndex(directoryModel.setRootPath(pathDir.canonicalPath()));
+    for (int i = 1; i < directoryModel.columnCount(); i++) {
+        ui->dirView->hideColumn(i);
+    }
+    return true;
+}
 
 void MainWindow::on_actionOpen_triggered() {
-
-    QString folderName = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
-
-    if (folderName == nullptr) {
+    QString folderPath = QFileDialog::getExistingDirectory(nullptr, ("Select Folder"), QDir::currentPath());
+    if (folderPath == nullptr) {
         return;
     }
+    setDirectory(folderPath);
+}
 
-    setFolder(folderName);
-
+void MainWindow::on_toolButton_clicked() {
+    ui->actionOpen->trigger();
 }

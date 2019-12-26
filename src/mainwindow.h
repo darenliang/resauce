@@ -24,10 +24,14 @@ private slots:
 
     void on_actionOpen_triggered();
 
+    void on_toolButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void setItem(QTreeWidgetItem* item, QFileInfo& info, QFileInfo* parent);
 
     void setFolder(const QString& folderName);
+
+    bool setDirectory(const QString &folderPath);
 };
 #endif // MAINWINDOW_H

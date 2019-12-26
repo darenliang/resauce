@@ -61,35 +61,21 @@
         <property name="childrenCollapsible">
          <bool>false</bool>
         </property>
-        <widget class="QTreeWidget" name="treeWidget">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QTreeView" name="dirView">
          <property name="minimumSize">
           <size>
            <width>200</width>
            <height>0</height>
           </size>
          </property>
-         <property name="itemsExpandable">
+         <property name="headerHidden">
           <bool>true</bool>
          </property>
          <attribute name="headerVisible">
           <bool>false</bool>
          </attribute>
-         <column>
-          <property name="text">
-           <string notr="true">1</string>
-          </property>
-         </column>
         </widget>
-        <widget class="QTreeWidget" name="fileTree">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
+        <widget class="QTableView" name="fileView">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>1</horstretch>
@@ -105,34 +91,6 @@
          <property name="focusPolicy">
           <enum>Qt::StrongFocus</enum>
          </property>
-         <property name="sortingEnabled">
-          <bool>true</bool>
-         </property>
-         <column>
-          <property name="text">
-           <string>Name</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>New Name</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Size</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Created</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Modified</string>
-          </property>
-         </column>
         </widget>
        </widget>
       </item>

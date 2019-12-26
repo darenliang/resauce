@@ -1,12 +1,13 @@
 #include <QtCore/QString>
 #include "state.h"
 
-QString State::folderName;
+QFileSystemModel State::directoryModel;
+QFileSystemModel State::fileList;
 
-void State::setFolderName(const QString &fName) {
-    folderName = fName;
+QFileSystemModel &State::getDirectoryModel() {
+    return directoryModel;
 }
 
-const QString &State::getFolderName() {
-    return folderName;
+QFileSystemModel &State::getFileList() {
+    return fileList;
 }
