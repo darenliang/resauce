@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QTreeWidgetItem>
 #include <QFileInfo>
+#include <QtWidgets/QMenu>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,19 +29,25 @@ private slots:
 
     void on_dirView_clicked(const QModelIndex &index);
 
-    void on_rootFolderSearchButton_clicked();
-
-    void on_rootFolderSearch_returnPressed();
-
     void on_openFolderButton_clicked();
+
+    void on_rootFolderSearch_textEdited(const QString &arg1);
+
+    void on_dirView_customContextMenuRequested(const QPoint &pos);
+
+    void on_actionBack_triggered();
 
 private:
     Ui::MainWindow *ui;
 
     AboutDialog about;
 
+    QMenu folderContextMenu;
+
     void setItem(QTreeWidgetItem* item, QFileInfo& info, QFileInfo* parent);
 
-    bool setDirectory(const QString &folderPath);
+    bool setDirectory(const QString &folderPath, bool manual);
+
+    bool visitFolder(const QModelIndex &index);
 };
 #endif // MAINWINDOW_H

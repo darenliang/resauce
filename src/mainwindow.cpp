@@ -13,6 +13,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     ui->rootFolderSearch->setFocus();
+    setDirectory(QDir::rootPath(), true);
 }
 
 MainWindow::~MainWindow() {
@@ -78,7 +79,7 @@ void MainWindow::setFolder(const QString &folderName) {
 }
  */
 
-bool MainWindow::setDirectory(const QString &folderPath) {
+bool MainWindow::setDirectory(const QString &folderPath, bool manual = false) {
     const QDir pathDir(folderPath);
     if (!pathDir.exists()) {
         return false;
@@ -88,10 +89,20 @@ bool MainWindow::setDirectory(const QString &folderPath) {
     ui->dirView->setModel(&directoryModel);
     QString path = pathDir.canonicalPath();
     ui->dirView->setRootIndex(directoryModel.setRootPath(path));
-    ui->rootFolderSearch->setText(path);
+    if (!manual) {
+        ui->rootFolderSearch->setText(path);
+    }
     for (int i = 1; i < directoryModel.columnCount(); i++) {
         ui->dirView->hideColumn(i);
     }
+    return true;
+}
+
+bool MainWindow::visitFolder(const QModelIndex &index) {
+    QFileSystemModel &fileList = State::getFileList();
+    fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    ui->fileView->setModel(&fileList);
+    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalFilePath()));
     return true;
 }
 
@@ -104,25 +115,42 @@ void MainWindow::on_actionOpen_triggered() {
 }
 
 void MainWindow::on_dirView_clicked(const QModelIndex &index) {
-    QFileSystemModel &fileList = State::getFileList();
-    fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
-    ui->fileView->setModel(&fileList);
-    qDebug() << State::getDirectoryModel().fileInfo(index).canonicalFilePath();
-    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalFilePath()));
-}
-
-void MainWindow::on_rootFolderSearchButton_clicked() {
-    QString folderPath = ui->rootFolderSearch->text();
-    if (folderPath.length() == 0) {
-        return;
-    }
-    setDirectory(folderPath);
-}
-
-void MainWindow::on_rootFolderSearch_returnPressed() {
-    ui->rootFolderSearchButton->click();
+    visitFolder(index);
 }
 
 void MainWindow::on_openFolderButton_clicked() {
     ui->actionOpen->trigger();
+}
+
+void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath) {
+    if (folderPath.isEmpty()) {
+        setDirectory(QDir::rootPath(), true);
+        return;
+    }
+    setDirectory(folderPath, true);
+}
+
+void MainWindow::on_dirView_customContextMenuRequested(const QPoint &pos) {
+    QModelIndex index = ui->dirView->indexAt(pos);
+    if (!index.isValid()) {
+        return;
+    }
+
+    QMenu contextMenu;
+    contextMenu.addAction("Set Root");
+    QAction *contextAction = contextMenu.exec(ui->dirView->mapToGlobal(pos));
+
+    if (contextAction) {
+        if (contextAction->text().contains("Set Root")) {
+            setDirectory(State::getDirectoryModel().fileInfo(index).canonicalFilePath());
+        }
+    }
+}
+
+void MainWindow::on_actionBack_triggered()
+{
+    QDir currDir = QDir(State::getDirectoryModel().rootPath());
+    currDir.cdUp();
+    setDirectory(currDir.canonicalPath(), false);
+    visitFolder(State::getDirectoryModel().index(currDir.canonicalPath()));
 }
