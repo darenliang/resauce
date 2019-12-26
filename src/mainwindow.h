@@ -26,6 +26,8 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void on_dirView_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     void setItem(QTreeWidgetItem* item, QFileInfo& info, QFileInfo* parent);

@@ -105,3 +105,11 @@ void MainWindow::on_actionOpen_triggered() {
 void MainWindow::on_toolButton_clicked() {
     ui->actionOpen->trigger();
 }
+
+void MainWindow::on_dirView_clicked(const QModelIndex &index)
+{
+    QFileSystemModel &fileList = State::getFileList();
+    fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    ui->fileView->setModel(&fileList);
+    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(index).canonicalPath()));
+}
