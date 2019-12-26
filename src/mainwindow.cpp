@@ -8,11 +8,14 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <QDebug>
-#include <iostream>
+#include <QStandardPaths>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     ui->rootFolderSearch->setFocus();
+    // Set default directory to be the user's home
+    // This call is platform independent
+    setDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
 }
 
 MainWindow::~MainWindow() {
