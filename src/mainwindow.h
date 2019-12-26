@@ -30,8 +30,6 @@ private slots:
 
     void on_rootFolderSearch_returnPressed();
 
-    void on_openFolderButton_clicked();
-
     void dirView_selection_change(const QModelIndex &current);
 
 private:

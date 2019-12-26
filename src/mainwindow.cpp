@@ -82,7 +82,3 @@ void MainWindow::on_rootFolderSearchButton_clicked() {
 void MainWindow::on_rootFolderSearch_returnPressed() {
     ui->rootFolderSearchButton->click();
 }
-
-void MainWindow::on_openFolderButton_clicked() {
-    ui->actionOpen->trigger();
-}
