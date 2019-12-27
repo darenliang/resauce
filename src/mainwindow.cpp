@@ -71,7 +71,9 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
     QFileSystemModel &fileList = State::getFileList();
     fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
     ui->fileView->setModel(&fileList);
-    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(current).canonicalFilePath()));
+    QString currFile = State::getDirectoryModel().fileInfo(current).canonicalFilePath();
+    qDebug() << currFile;
+    ui->fileView->setRootIndex(fileList.setRootPath(currFile));
 }
 
 void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath) {
