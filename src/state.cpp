@@ -1,4 +1,3 @@
-#include <QtCore/QString>
 #include "state.h"
 
 QFileSystemModel State::directoryModel;

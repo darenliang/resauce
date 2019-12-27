@@ -25,6 +25,6 @@ add_executable(resauce
         src/fileutil.h
         src/info.h
         src/state.cpp
-        src/state.h)
+        src/state.h src/dirutil.cpp src/dirutil.h)
 
 target_link_libraries(resauce PRIVATE Qt5::Widgets)

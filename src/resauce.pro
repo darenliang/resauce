@@ -20,14 +20,16 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     aboutdialog.cpp \
-    state.cpp
+    state.cpp \
+    dirutil.cpp
 
 HEADERS += \
     fileutil.h \
     info.h \
     mainwindow.h \
     aboutdialog.h \
-    state.h
+    state.h \
+    dirutil.h
 
 FORMS += \
     mainwindow.ui \

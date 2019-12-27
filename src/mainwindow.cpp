@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "fileutil.h"
 #include "state.h"
+#include "dirutil.h"
 
 #include <QFileDialog>
 #include <QFileSystemModel>
-#include <QFileInfo>
 #include <QDateTime>
 #include <QDebug>
 #include <QStandardPaths>
@@ -100,7 +99,5 @@ void MainWindow::on_dirView_customContextMenuRequested(const QPoint &pos) {
 }
 
 void MainWindow::on_actionBack_triggered() {
-    QDir currDir = QDir(State::getDirectoryModel().rootPath());
-    currDir.cdUp();
-    setDirectory(currDir.canonicalPath());
+    setDirectory(DirUtil::moveUpDir(State::getDirectoryModel().rootPath()));
 }

@@ -10,11 +10,7 @@ class State {
 public:
     static QFileSystemModel &getDirectoryModel();
 
-    static void setDirectoryModel(const QString &fPath);
-
     static QFileSystemModel &getFileList();
-
-    static void setFileList(const QString &fPath);
 };
 
 #endif //STATE_H
