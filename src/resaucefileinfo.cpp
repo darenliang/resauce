@@ -20,10 +20,11 @@ QString ResauceFileInfo::fileNameWithoutExtension() {
 
 QString ResauceFileInfo::fileExtension() {
 
-    if (!fileName().contains('.')) {
-        return "";
+    if (fileName().contains('.')) {
+        return fileName().right(fileName().length() - fileName().lastIndexOf("."));
+    } else {
+        return fileName();
     }
 
-    return fileName().right(fileName().length() - fileName().lastIndexOf("."));
-
 }
+
