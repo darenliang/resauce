@@ -3,6 +3,8 @@
 
 #include <QFileInfo>
 
+// Same as QFileInfo except holds information
+// About the file's new name
 struct ResauceFileInfo : public QFileInfo
 {
 
