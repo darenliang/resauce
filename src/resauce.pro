@@ -20,6 +20,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     aboutdialog.cpp \
+    resaucefileinfo.cpp \
     resaucefilemodel.cpp \
     state.cpp
 
@@ -28,6 +29,7 @@ HEADERS += \
     info.h \
     mainwindow.h \
     aboutdialog.h \
+    resaucefileinfo.h \
     resaucefilemodel.h \
     state.h
 

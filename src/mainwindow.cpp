@@ -69,10 +69,17 @@ void MainWindow::on_actionOpen_triggered() {
 }
 
 void MainWindow::dirView_selection_change(const QModelIndex &current) {
-    QFileSystemModel &fileList = State::getFileList();
-    fileList.setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    auto &fileList = State::getFileList();
     ui->fileView->setModel(&fileList);
-    ui->fileView->setRootIndex(fileList.setRootPath(State::getDirectoryModel().fileInfo(current).canonicalFilePath()));
+    auto file = State::getDirectoryModel().fileInfo(current);
+    qDebug() << file.absoluteFilePath();
+    fileList.names().clear();
+    QDirIterator iter{file.absoluteFilePath(), QDir::NoDotAndDotDot | QDir::Files};
+    while (iter.hasNext()) {
+        auto x = ResauceFileInfo(iter.next());
+        x.new_name = x.fileName().toUpper();
+        fileList.put(x);
+    }
 }
 
 void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath) {

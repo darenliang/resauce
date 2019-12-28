@@ -2,12 +2,12 @@
 #include "state.h"
 
 QFileSystemModel State::directoryModel;
-QFileSystemModel State::fileList;
+ResauceFileModel State::fileList;
 
 QFileSystemModel &State::getDirectoryModel() {
     return directoryModel;
 }
 
-QFileSystemModel &State::getFileList() {
+ResauceFileModel &State::getFileList() {
     return fileList;
 }
