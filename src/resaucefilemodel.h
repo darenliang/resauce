@@ -28,8 +28,6 @@ class ResauceFileModel : public QAbstractTableModel {
 
 public:
 
-    ResauceFileModel();
-
     void put(ResauceFileInfo info);
 
     ResauceFileInfo& get(int index);
