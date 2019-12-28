@@ -6,7 +6,5 @@ ResauceFileInfo::ResauceFileInfo(const QString &file, const QString new_name) : 
 
 }
 
-ResauceFileInfo::ResauceFileInfo() {
-
-}
+ResauceFileInfo::ResauceFileInfo(): QFileInfo() {}
 
