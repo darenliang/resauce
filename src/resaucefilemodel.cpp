@@ -4,12 +4,6 @@
 #include <QDebug>
 #include "fileutil.h"
 
-ResauceFileModel::ResauceFileModel(): QAbstractTableModel() {
-
-//    this->setFilter(QDir::Files | QDir::NoDotAndDotDot);
-
-}
-
 void ResauceFileModel::put(ResauceFileInfo info) {
     files.append(info);
     emit layoutChanged();
@@ -75,36 +69,3 @@ QVariant ResauceFileModel::headerData(int section, Qt::Orientation, int role) co
     }
 
 }
-
-//QVariant ResauceFileModel::headerData(int section, Qt::Orientation orientation, int role) const {
-
-//    if (section == 1) {
-//        return "New Name";
-//    } else {
-//        return QFileSystemModel::headerData(section, orientation, role);
-//    }
-
-//}
-
-//QVariant ResauceFileModel::data(const QModelIndex &index, int role) const {
-
-//    if (!index.isValid() || index.model() != this)
-//            return QVariant();
-
-//    if (index.column() == 1) {
-
-//        switch (role) {
-
-//            case Qt::DisplayRole: return new_names[this->fileInfo(index).fileName()];
-
-//            default: return QFileSystemModel::data(index, role);
-
-//        }
-
-//    } else {
-
-//        return QFileSystemModel::data(index, role);
-
-//    }
-
-//}
