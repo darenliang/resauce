@@ -20,7 +20,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     aboutdialog.cpp \
-<<<<<<< HEAD
     resaucefileinfo.cpp \
     resaucefilemodel.cpp \
     state.cpp \
