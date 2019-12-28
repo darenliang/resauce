@@ -79,6 +79,7 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
         x.new_name = x.fileName().toUpper(); // Assign new name, just making it all uppercase in the abscence of our renaming logic
         fileList.put(x); // Add it to the model
     }
+    fileList.updateLayout();
 }
 
 void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath) {

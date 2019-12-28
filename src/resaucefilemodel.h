@@ -36,6 +36,7 @@ public:
 
     QVector<ResauceFileInfo>& names();
 
+    void updateLayout();
 };
 
 #endif // QRESAUCEFILEMODEL_H
