@@ -20,18 +20,25 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     aboutdialog.cpp \
+<<<<<<< HEAD
     resaucefileinfo.cpp \
     resaucefilemodel.cpp \
-    state.cpp
+    state.cpp \
+    dirutil.cpp
 
 HEADERS += \
     fileutil.h \
     info.h \
     mainwindow.h \
     aboutdialog.h \
+<<<<<<< HEAD
     resaucefileinfo.h \
     resaucefilemodel.h \
     state.h
+=======
+    state.h \
+    dirutil.h
+>>>>>>> 452afb3c6fa588d747c99addd22b81c267e37a1d
 
 FORMS += \
     mainwindow.ui \

@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QTreeWidgetItem>
 #include <QFileInfo>
+#include <QtWidgets/QFileSystemModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
