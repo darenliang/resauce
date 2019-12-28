@@ -2,6 +2,7 @@
 #include "state.h"
 
 #include <QDebug>
+#include <algorithm>
 #include "fileutil.h"
 
 void ResauceFileModel::put(ResauceFileInfo info) {
@@ -67,5 +68,33 @@ QVariant ResauceFileModel::headerData(int section, Qt::Orientation, int role) co
         case 2: return "Size";
         default: return QVariant();
     }
+
+}
+
+void ResauceFileModel::sort(int column, Qt::SortOrder order) {
+
+    std::sort(files.begin(), files.end(), [&](ResauceFileInfo a, ResauceFileInfo b){
+
+        if (column == 0 || column == 1) {
+            auto ax = (column == 0) ? a.fileName() : a.new_name;
+            auto bx = (column == 0) ? b.fileName() : b.new_name;
+            if (order == Qt::AscendingOrder) {
+                return QString::compare(ax, bx) <= 0;
+            } else {
+                return QString::compare(ax, bx) > 0;
+            }
+        }
+
+        if (column == 2) {
+            if (order == Qt::AscendingOrder) {
+                return a.size() > b.size();
+            } else {
+                return a.size() < b.size();
+            }
+        }
+
+    });
+
+    emit layoutChanged();
 
 }

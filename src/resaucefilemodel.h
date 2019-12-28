@@ -26,6 +26,8 @@ class ResauceFileModel : public QAbstractTableModel {
 
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) override;
+
 public:
 
     void put(ResauceFileInfo info);
