@@ -6,6 +6,9 @@
 
 void ResauceFileModel::put(ResauceFileInfo info) {
     files.append(info);
+}
+
+void ResauceFileModel::updateLayout() {
     emit layoutChanged();
 }
 
