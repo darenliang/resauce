@@ -92,7 +92,7 @@ void ResauceFileModel::sort(int column, Qt::SortOrder order) {
             if (order == Qt::AscendingOrder) {
                 return a.size() > b.size();
             } else {
-                return a.size() < b.size();
+                return a.size() <= b.size();
             }
         }
 
