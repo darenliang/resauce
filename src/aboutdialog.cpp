@@ -17,6 +17,8 @@ AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AboutDia
 
     ui->buildLabel->setText(build);
     ui->authorLabel->setText("Authors: " + AUTHORS);
+
+    // Make website clickable
     ui->website->setText("Website: <a href=\"" + WEBSITE + "\">" + WEBSITE + "</a>");
 }
 
