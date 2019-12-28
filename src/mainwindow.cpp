@@ -76,7 +76,7 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
     QDirIterator iter{file.absoluteFilePath(), QDir::NoDotAndDotDot | QDir::Files}; // Create a dir iterator for the selected folder
     while (iter.hasNext()) {
         auto x = ResauceFileInfo(iter.next()); // Create file info
-        x.new_name = x.fileName().toUpper(); // Assign new name, just making it all uppercase in the abscence of our renaming logic
+        x.new_name = x.fileNameWithoutExtension().toUpper() + x.fileExtension(); // Assign new name, just making it all uppercase in the abscence of our renaming logic
         fileList.put(x); // Add it to the model
     }
     fileList.updateLayout();

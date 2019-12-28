@@ -13,6 +13,10 @@ struct ResauceFileInfo : public QFileInfo {
 
     ResauceFileInfo();
 
+    QString fileNameWithoutExtension();
+
+    QString fileExtension();
+
 };
 
 #endif // RESAUCEFILEINFO_H
