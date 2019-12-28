@@ -2,6 +2,7 @@
 #include "state.h"
 
 #include <QDebug>
+#include "fileutil.h"
 
 ResauceFileModel::ResauceFileModel(): QAbstractTableModel() {
 
@@ -38,15 +39,13 @@ int ResauceFileModel::rowCount(const QModelIndex&) const {
 
 QVariant ResauceFileModel::data(const QModelIndex &index, int role) const {
 
-    qDebug() << "get data!";
-
     switch(role) {
         case Qt::DisplayRole: {
             auto file = files[index.row()];
             switch(index.column()) {
                 case 0: return file.fileName();
                 case 1: return file.new_name;
-                case 2: return file.size();
+                case 2: return FileUtil::sizeStr(file);
                 default: return QVariant();
             }
         }

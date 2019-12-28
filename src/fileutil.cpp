@@ -5,6 +5,8 @@
 // Instantiate
 QFileSystemModel FileUtil::model;
 
+const QString FileUtil::sizes[] = { "B", "KB", "MB", "GB", "TB" };
+
 QIcon FileUtil::getIcon(QString file) {
 
     auto dex = model.index(file);
@@ -38,5 +40,23 @@ qint64 FileUtil::getDirSize(QFileInfo& file) {
     }
 
     return total;
+
+}
+
+QPair<double, qint8> FileUtil::size(double s, qint8 index) {
+
+    if (s >= 1000) {
+        return size(s / 1000, index + 1);
+    } else {
+        return QPair<double, qint8>(s, index);
+    }
+
+}
+
+QString FileUtil::sizeStr(QFileInfo& info) {
+
+    auto p = size(info.size(), 0);
+
+    return QString::number(p.first, 'f', 2) + " " + sizes[p.second];
 
 }
