@@ -51,14 +51,18 @@ QVariant ResauceFileModel::data(const QModelIndex &index, int role) const {
             }
         }
         case Qt::DecorationRole: {
-            return QVariant(); // Stub
+            if (index.column() == 0) {
+                return icon_provider.icon(files[index.row()]);
+            } else {
+                return QVariant();
+            }
         }
         default: return QVariant();
     }
 
 }
 
-QVariant ResauceFileModel::headerData(int section, Qt::Orientation orientation, int role) const {
+QVariant ResauceFileModel::headerData(int section, Qt::Orientation, int role) const {
 
     if (role != Qt::DisplayRole) {
         return QVariant();

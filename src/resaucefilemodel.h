@@ -14,6 +14,8 @@ class ResauceFileModel : public QAbstractTableModel {
 
     QVector<ResauceFileInfo> files;
 
+    QFileIconProvider icon_provider;
+
     // Overrides
 
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
