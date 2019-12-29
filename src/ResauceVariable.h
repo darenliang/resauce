@@ -7,9 +7,9 @@ struct ResauceVariable {
 
     QString name;
 
-    double value;
+    double value = 0;
 
-    double incdec;
+    double incdec = 1;
 
     int freq = 1;
 
