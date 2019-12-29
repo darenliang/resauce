@@ -118,7 +118,11 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
     r.vars.append(x);
     r.vars.append(s);
 
-    r._template = "Season {s} Episode {x}{.ext}";
+    r.matchers.append(QRegularExpression(".*\\.jpg"));
+
+    r.extractors.append(QRegularExpression("^(?<xx>\\d{3})"));
+
+    r._template = "{xx} Season {s} Episode {x}{.ext}";
 
     QDirIterator iter{file.absoluteFilePath(),
                       QDir::NoDotAndDotDot | QDir::Files}; // Create a dir iterator for the selected folder
