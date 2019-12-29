@@ -10,8 +10,6 @@
 class Resaucer
 {
 
-    Q_OBJECT
-
 public:
 
     QVector<ResauceFileInfo> files;
