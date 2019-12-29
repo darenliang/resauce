@@ -22,16 +22,19 @@ SOURCES += \
     aboutdialog.cpp \
     resaucefileinfo.cpp \
     resaucefilemodel.cpp \
+    resaucer.cpp \
     state.cpp \
     dirutil.cpp
 
 HEADERS += \
+    ResauceVariable.h \
     fileutil.h \
     info.h \
     mainwindow.h \
     aboutdialog.h \
     resaucefileinfo.h \
     resaucefilemodel.h \
+    resaucer.h \
     state.h \
     dirutil.h
 
