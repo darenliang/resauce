@@ -4,7 +4,7 @@ Resaucer::Resaucer() {}
 
 void Resaucer::process() {
 
-    for (auto file : files) {
+    for (auto& file : files) {
 
         auto name = file.fileName();
 
@@ -14,7 +14,7 @@ void Resaucer::process() {
 
         QString output = _template;
 
-        for (auto regex : extractors) {
+        for (auto& regex : extractors) {
 
             auto match = regex.match(name);
 
@@ -30,13 +30,13 @@ void Resaucer::process() {
 
         }
 
-        for (auto group : extracted.keys()) {
+        for (auto& group : extracted.keys()) {
 
             output = output.replace("{"+group+"}", extracted[group]);
 
         }
 
-        for (auto var : vars) {
+        for (auto& var : vars) {
 
             output = output.replace("{" + var.name + "}", QString::number(var.value));
 
