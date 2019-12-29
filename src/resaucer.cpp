@@ -40,7 +40,15 @@ void Resaucer::process() {
 
             output = output.replace("{" + var.name + "}", QString::number(var.value));
 
-            var.value += var.incdec;
+            var.count++;
+
+            if (var.count >= var.freq) {
+
+                var.count = 0;
+
+                var.value += var.incdec;
+
+            }
 
         }
 

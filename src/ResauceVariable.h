@@ -11,6 +11,10 @@ struct ResauceVariable {
 
     double incdec;
 
+    int freq = 1;
+
+    int count = 0;
+
 };
 
 #endif // RESAUCEVARIABLE_H
