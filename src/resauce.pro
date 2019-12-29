@@ -23,6 +23,7 @@ SOURCES += \
     resaucefileinfo.cpp \
     resaucefilemodel.cpp \
     resaucer.cpp \
+    resauceroption.cpp \
     state.cpp \
     dirutil.cpp
 
@@ -35,6 +36,7 @@ HEADERS += \
     resaucefileinfo.h \
     resaucefilemodel.h \
     resaucer.h \
+    resauceroption.h \
     state.h \
     dirutil.h
 
