@@ -14,9 +14,15 @@ void Resaucer::process() {
 
         QString output = _template;
 
-        for (auto regex : ignore) {
+        for (auto& regex : ignore) {
             if (regex.match(name).hasMatch()) {
                 goto next_file; // Ignore this file
+            }
+        }
+
+        for (auto& regex : matchers) {
+            if (!regex.match(name).hasMatch()) {
+                goto next_file; // This file doesnt match the required format
             }
         }
 

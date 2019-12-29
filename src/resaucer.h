@@ -16,6 +16,7 @@ public:
     QVector<ResauceVariable> vars;
     QVector<QRegularExpression> extractors;
     QVector<QRegularExpression> ignore;
+    QVector<QRegularExpression> matchers;
     QString _template;
 
     Resaucer();
