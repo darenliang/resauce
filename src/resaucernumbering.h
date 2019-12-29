@@ -22,9 +22,9 @@
 #define RESAUCERNUMBERING_H
 
 
-#include "resauceroption.h"
+#include "resaucerprocessor.h"
 
-class ResaucerNumbering : public ResaucerOption {
+class ResaucerNumbering : public ResaucerProcessor {
 public:
     QString execute(QString name) override;
 

@@ -34,8 +34,8 @@ add_executable(resauce
         src/resaucefilemodel.h
         src/resaucer.cpp
         src/resaucer.h
-        src/resauceroption.cpp
-        src/resauceroption.h
+        src/resaucerprocessor.cpp
+        src/resaucerprocessor.h
         src/resaucernumbering.cpp
         src/resaucernumbering.h)
 

@@ -18,16 +18,16 @@
  */
 
 
-#ifndef RESAUCEROPTION_H
-#define RESAUCEROPTION_H
+#ifndef RESAUCERPROCESSOR_H
+#define RESAUCERPROCESSOR_H
 
 #include <QString>
 
-class ResaucerOption {
+class ResaucerProcessor {
 public:
-    virtual ~ResaucerOption() = 0;
+    virtual ~ResaucerProcessor() = 0;
 
     virtual QString execute(QString name) = 0;
 };
 
-#endif // RESAUCEROPTION_H
+#endif // RESAUCERPROCESSOR_H

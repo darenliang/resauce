@@ -18,6 +18,6 @@
  */
 
 
-#include "resauceroption.h"
+#include "resaucerprocessor.h"
 
-ResaucerOption::~ResaucerOption() = default;
+ResaucerProcessor::~ResaucerProcessor() = default;

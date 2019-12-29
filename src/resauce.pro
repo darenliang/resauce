@@ -24,7 +24,7 @@ SOURCES += \
     resaucefilemodel.cpp \
     resaucer.cpp \
     resaucernumbering.cpp \
-    resauceroption.cpp \
+    resaucerprocessor.cpp \
     state.cpp \
     dirutil.cpp
 
@@ -38,7 +38,7 @@ HEADERS += \
     resaucefilemodel.h \
     resaucer.h \
     resaucernumbering.h \
-    resauceroption.h \
+    resaucerprocessor.h \
     state.h \
     dirutil.h
 
