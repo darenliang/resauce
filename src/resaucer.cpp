@@ -44,6 +44,8 @@ void Resaucer::process() {
 
         }
 
+        output = output.replace("{.ext}", file.fileExtension());
+
         file.new_name = output;
 
     }
