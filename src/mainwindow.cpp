@@ -22,6 +22,7 @@
 #include "./ui_mainwindow.h"
 #include "state.h"
 #include "dirutil.h"
+#include "resaucer.h"
 
 #include <QFileDialog>
 #include <QFileSystemModel>
@@ -98,14 +99,27 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
     auto file = State::getDirectoryModel().fileInfo(current);
     qDebug() << file.absoluteFilePath();
     fileList.names().clear();
+
+    Resaucer r;
+
+    r.vars.append({"x", 0.0, 1.0});
+
     QDirIterator iter{file.absoluteFilePath(),
                       QDir::NoDotAndDotDot | QDir::Files}; // Create a dir iterator for the selected folder
     while (iter.hasNext()) {
         auto x = ResauceFileInfo(iter.next()); // Create file info
-        x.new_name = x.fileNameWithoutExtension().toUpper() +
-                     x.fileExtension(); // Assign new name, just making it all uppercase in the abscence of our renaming logic
-        fileList.put(x); // Add it to the model
+//        x.new_name = x.fileNameWithoutExtension().toUpper() +
+//                     x.fileExtension(); // Assign new name, just making it all uppercase in the abscence of our renaming logic
+//        fileList.put(x); // Add it to the model
+        r.files.append(x);
     }
+
+    r.process();
+
+    for (auto rfi : r.files) {
+        fileList.put(rfi);
+    }
+
     fileList.updateLayout();
 }
 
