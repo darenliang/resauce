@@ -14,6 +14,12 @@ void Resaucer::process() {
 
         QString output = _template;
 
+        for (auto regex : ignore) {
+            if (regex.match(name).hasMatch()) {
+                goto next_file; // Ignore this file
+            }
+        }
+
         for (auto& regex : extractors) {
 
             auto match = regex.match(name);
@@ -52,9 +58,11 @@ void Resaucer::process() {
 
         }
 
-        output = output.replace("{.ext}", file.fileExtension());
+        output = output.replace("{.ext}", ext);
 
         file.new_name = output;
+
+        next_file:;
 
     }
 

@@ -15,6 +15,7 @@ public:
     QVector<ResauceFileInfo> files;
     QVector<ResauceVariable> vars;
     QVector<QRegularExpression> extractors;
+    QVector<QRegularExpression> ignore;
     QString _template;
 
     Resaucer();
