@@ -45,7 +45,8 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset theme="go-previous"/>
+           <iconset theme="go-previous">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -111,6 +112,9 @@
           <font>
            <pointsize>9</pointsize>
           </font>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
          </property>
          <property name="sortingEnabled">
           <bool>true</bool>
@@ -221,7 +225,8 @@
   </action>
   <action name="actionBack">
    <property name="icon">
-    <iconset theme="go-previous"/>
+    <iconset theme="go-previous">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Back</string>
