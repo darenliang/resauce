@@ -42,7 +42,7 @@ void Resaucer::process() {
 
             var.count++;
 
-            if (var.count >= var.freq) {
+            if (var.count > var.freq) {
 
                 var.count = 0;
 
