@@ -1,5 +1,7 @@
 #include "resaucer.h"
 
+#include <QDebug>
+
 Resaucer::Resaucer() {}
 
 void Resaucer::process() {
@@ -33,6 +35,9 @@ void Resaucer::process() {
             if (match.hasMatch()) {
 
                 for (auto group : regex.namedCaptureGroups()) {
+
+                    if (group == "")
+                        continue;
 
                     extracted[group] = match.captured(group);
 
