@@ -113,6 +113,9 @@
            <pointsize>9</pointsize>
           </font>
          </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
@@ -136,9 +139,9 @@
         <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="tab_5">
+        <widget class="QWidget" name="predicateTab">
          <attribute name="title">
-          <string>Page</string>
+          <string>Selection</string>
          </attribute>
          <widget class="QPushButton" name="pushButton">
           <property name="geometry">
@@ -154,9 +157,9 @@
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="tab_3">
+        <widget class="QWidget" name="numberingTab">
          <attribute name="title">
-          <string>Tab 1</string>
+          <string>Numbering</string>
          </attribute>
          <widget class="QGroupBox" name="groupBox">
           <property name="geometry">
