@@ -22,13 +22,24 @@
 
 #include <utility>
 
-ResaucerReplace::ResaucerReplace(QString start, QString end) {
+ResaucerReplace::ResaucerReplace(QString start, QString end, bool caseBool) {
     startString = std::move(start);
     endString = std::move(end);
+    caseInsensitive = caseBool;
 }
 
+void ResaucerReplace::compile() {
+    QString tempCompile = templateRegex.replace("{{replaceString}}", startString);
+    if (caseInsensitive) {
+        tempCompile = templateRegex.replace("{{caseDisable}}", "(?i)")
+                .replace("{{caseEnable}}", "?-i");
+    } else {
+        tempCompile = templateRegex.replace("{{caseDisable}}", "")
+                .replace("{{caseEnable}}", "");
+    }
+    replaceRegex = QRegExp(tempCompile);
+}
 
 QString ResaucerReplace::execute(QString name) {
-    return name.replace(startString, endString);
-
+    return name.replace(replaceRegex, endString);
 }
