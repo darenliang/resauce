@@ -21,6 +21,7 @@
 #include "aboutdialog.h"
 #include "ui_aboutdialog.h"
 #include "info.h"
+#include "randutil.h"
 
 using namespace Info;
 
@@ -44,4 +45,22 @@ AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AboutDia
 
 AboutDialog::~AboutDialog() {
     delete ui;
+}
+
+void AboutDialog::setEasterEgg() {
+    QPixmap easterEgg("../res/easter.png");
+    ui->imageLabel->setPixmap(easterEgg);
+}
+
+void AboutDialog::revertEasterEgg() {
+    QPixmap normalImage("../res/icon.png");
+    ui->imageLabel->setPixmap(normalImage);
+}
+
+void AboutDialog::loadImage() {
+    if (RandUtil::getEasterEggChance()) {
+        setEasterEgg();
+    } else {
+        revertEasterEgg();
+    }
 }

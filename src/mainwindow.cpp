@@ -22,12 +22,14 @@
 #include "./ui_mainwindow.h"
 #include "state.h"
 #include "dirutil.h"
+#include "randutil.h"
 
 #include <QFileDialog>
 #include <QFileSystemModel>
 #include <QDateTime>
 #include <QDebug>
 #include <QStandardPaths>
+#include <random>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -58,6 +60,7 @@ void MainWindow::on_actionQuit_triggered() {
 
 // Open about dialog on about action
 void MainWindow::on_actionAbout_triggered() {
+    about.loadImage();
     about.exec();
 }
 

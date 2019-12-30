@@ -18,31 +18,14 @@
  */
 
 
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#ifndef RANDUTIL_H
+#define RANDUTIL_H
 
-#include <QDialog>
 
-namespace Ui {
-    class AboutDialog;
-}
-
-class AboutDialog : public QDialog {
-Q_OBJECT
-
+class RandUtil
+{
 public:
-    explicit AboutDialog(QWidget *parent = nullptr);
-
-    ~AboutDialog();
-
-    void loadImage();
-
-private:
-    Ui::AboutDialog *ui;
-
-    void setEasterEgg();
-
-    void revertEasterEgg();
+    static bool getEasterEggChance();
 };
 
-#endif // ABOUTDIALOG_H
+#endif // RANDUTIL_H

@@ -18,31 +18,12 @@
  */
 
 
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#include <random>
+#include "randutil.h"
 
-#include <QDialog>
-
-namespace Ui {
-    class AboutDialog;
+bool RandUtil::getEasterEggChance() {
+    std::random_device rd;
+    std::mt19937 eng(rd());
+    std::uniform_int_distribution<> distr(0, 99);
+    return distr(eng) == 50;
 }
-
-class AboutDialog : public QDialog {
-Q_OBJECT
-
-public:
-    explicit AboutDialog(QWidget *parent = nullptr);
-
-    ~AboutDialog();
-
-    void loadImage();
-
-private:
-    Ui::AboutDialog *ui;
-
-    void setEasterEgg();
-
-    void revertEasterEgg();
-};
-
-#endif // ABOUTDIALOG_H

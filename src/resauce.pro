@@ -20,6 +20,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     aboutdialog.cpp \
+    randutil.cpp \
     resaucefileinfo.cpp \
     resaucefilemodel.cpp \
     state.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     info.h \
     mainwindow.h \
     aboutdialog.h \
+    randutil.h \
     resaucefileinfo.h \
     resaucefilemodel.h \
     state.h \

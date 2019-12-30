@@ -28,6 +28,8 @@ add_executable(resauce
         src/state.h
         src/dirutil.cpp
         src/dirutil.h
+        src/randutil.cpp
+        src/randutil.h
         src/resaucefileinfo.cpp
         src/resaucefileinfo.h
         src/resaucefilemodel.cpp
