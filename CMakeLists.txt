@@ -37,6 +37,8 @@ add_executable(resauce
         src/resaucerprocessor.cpp
         src/resaucerprocessor.h
         src/resaucernumbering.cpp
-        src/resaucernumbering.h)
+        src/resaucernumbering.h
+        src/resaucerreplace.cpp
+        src/resaucerreplace.h)
 
 target_link_libraries(resauce PRIVATE Qt5::Widgets)
