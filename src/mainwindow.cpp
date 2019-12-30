@@ -53,7 +53,7 @@ void MainWindow::resetDirectory(bool manual = false) {
     MainWindow::setDirectory(QStandardPaths::writableLocation(QStandardPaths::HomeLocation), manual);
 }
 
-// Quite application on quit action
+// Quit application on quit action
 void MainWindow::on_actionQuit_triggered() {
     QApplication::quit();
 }
