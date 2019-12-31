@@ -41,5 +41,6 @@ void ResaucerReplace::compile() {
 }
 
 QString ResaucerReplace::execute(QString name) {
+    compile();
     return name.replace(replaceRegex, endString);
 }
