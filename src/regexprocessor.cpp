@@ -28,7 +28,7 @@ RegexProcessor::RegexProcessor(QString &start, QString &end, bool caseBool) {
     caseInsensitive = caseBool;
 }
 
-void ResaucerReplace::compile() {
+void RegexProcessor::compile() {
     replaceRegex.setPattern(startString);
     if (caseInsensitive) {
         replaceRegex.setPatternOptions(QRegularExpression::PatternOption::CaseInsensitiveOption);
