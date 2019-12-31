@@ -21,20 +21,45 @@
 #ifndef RESAUCERNUMBERING_H
 #define RESAUCERNUMBERING_H
 
-
 #include "resaucerprocessor.h"
 
-class VariableProcessor : public ResaucerProcessor {
-public:
+#include <type_traits>
+
+template <typename T>
+struct VariableProcessor : public ResaucerProcessor {
+
+    VariableProcessor(QString& name);
+
     QString execute(QString name) override;
 
+    void init(T val);
+
+    void limit(T val);
+
+    T initial; // Initial value
+    T val; // Current value
+    T step; // Amount to increase / decrease by
+    T _limit; // Maximum value
+    bool _limitB = false;
+    int freq = 1; // With what frequency to adjust the value
+    int count = 0;
+
 private:
-    int mode;
-    int start;
-    int curr;
-    int end;
-    int step;
-    int pad;
+
+    virtual QString str();
+
+    QString name;
+
+};
+
+struct FloatProcessor : public VariableProcessor<double> {
+
+    FloatProcessor(QString& name);
+
+    QString str() override;
+
+    int precision = 2;
+
 };
 
 #endif // RESAUCERNUMBERING_H

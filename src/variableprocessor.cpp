@@ -20,7 +20,54 @@
 
 #include "variableprocessor.h"
 
-QString VariableProcessor::execute(QString name) {
-    curr += step;
-    return QString();
+template <typename T>
+VariableProcessor<T>::VariableProcessor(QString& name): ResaucerProcessor(), name{name} {}
+
+template <typename T>
+void VariableProcessor<T>::init(T val) {
+    this->initial = val;
+    this->val = val;
+}
+
+template <typename T>
+QString VariableProcessor<T>::execute(QString name) {
+
+    auto result = name.replace("{"+this->name+"}", str());
+
+    count++;
+
+    if (count >= freq) {
+        val += step;
+        count = 0;
+    }
+
+    if (_limitB) {
+
+        if ( (step < 0 && val < _limit) || (step > 0 && val > _limit) ) {
+
+            val = initial;
+
+        }
+
+    }
+
+    return result;
+
+}
+
+template <typename T>
+void VariableProcessor<T>::limit(T val) {
+    this->_limit = val;
+    this->_limitB = true;
+}
+
+template <typename T>
+QString VariableProcessor<T>::str() {
+    return QString::number(val);
+}
+
+FloatProcessor::FloatProcessor(QString& name): VariableProcessor<double>(name) {}
+
+QString FloatProcessor::str() {
+    return QString::number(val, 'f', precision);
 }
