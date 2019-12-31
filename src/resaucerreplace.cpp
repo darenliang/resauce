@@ -22,22 +22,17 @@
 
 #include <utility>
 
-ResaucerReplace::ResaucerReplace(QString start, QString end, bool caseBool) {
-    startString = std::move(start);
-    endString = std::move(end);
+ResaucerReplace::ResaucerReplace(QString &start, QString &end, bool caseBool) {
+    startString = start;
+    endString = end;
     caseInsensitive = caseBool;
 }
 
 void ResaucerReplace::compile() {
-    QString tempCompile = templateRegex.replace("{{replaceString}}", startString);
+    replaceRegex.setPattern(startString);
     if (caseInsensitive) {
-        tempCompile = templateRegex.replace("{{caseDisable}}", "(?i)")
-                .replace("{{caseEnable}}", "(?-i)");
-    } else {
-        tempCompile = templateRegex.replace("{{caseDisable}}", "")
-                .replace("{{caseEnable}}", "");
+        replaceRegex.setPatternOptions(QRegularExpression::PatternOption::CaseInsensitiveOption);
     }
-    replaceRegex = QRegExp(tempCompile);
 }
 
 QString ResaucerReplace::execute(QString name) {
