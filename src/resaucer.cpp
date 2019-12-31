@@ -59,11 +59,19 @@ void Resaucer::process() {
 
             var.count++;
 
-            if (var.count > var.freq) {
+            if (var.count >= var.freq) {
 
                 var.count = 0;
 
                 var.value += var.incdec;
+
+            }
+
+            if (var.lim) {
+
+                if (var.value > var._limit) {
+                    var.value = var.initial;
+                }
 
             }
 

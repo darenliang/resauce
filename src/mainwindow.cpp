@@ -105,14 +105,13 @@ void MainWindow::dirView_selection_change(const QModelIndex &current) {
     ResauceVariable x;
 
     x.name = "x";
-    x.value = 1;
-    x.incdec = 1;
+    x.init(1);
+    x.limit(10);
 
     ResauceVariable s;
 
     s.name = "s";
-    s.value = 1;
-    s.incdec = 1;
+    s.init(1);
     s.freq = 10;
 
     r.vars.append(x);
