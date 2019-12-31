@@ -20,6 +20,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     aboutdialog.cpp \
+    regexfilter.cpp \
     regexprocessor.cpp \
     resaucefileinfo.cpp \
     resaucefilemodel.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     info.h \
     mainwindow.h \
     aboutdialog.h \
+    regexfilter.h \
     regexprocessor.h \
     resaucefileinfo.h \
     resaucefilemodel.h \
