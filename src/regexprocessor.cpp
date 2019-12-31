@@ -18,17 +18,17 @@
  */
 
 
-#include "resaucerreplace.h"
+#include "regexprocessor.h"
 
 #include <utility>
 
-ResaucerReplace::ResaucerReplace(QString start, QString end, bool caseBool) {
+RegexProcessor::RegexProcessor(QString start, QString end, bool caseBool) {
     startString = std::move(start);
     endString = std::move(end);
     caseInsensitive = caseBool;
 }
 
-void ResaucerReplace::compile() {
+void RegexProcessor::compile() {
     QString tempCompile = templateRegex.replace("{{replaceString}}", startString);
     if (caseInsensitive) {
         tempCompile = templateRegex.replace("{{caseDisable}}", "(?i)")
@@ -40,6 +40,6 @@ void ResaucerReplace::compile() {
     replaceRegex = QRegExp(tempCompile);
 }
 
-QString ResaucerReplace::execute(QString name) {
+QString RegexProcessor::execute(QString name) {
     return name.replace(replaceRegex, endString);
 }

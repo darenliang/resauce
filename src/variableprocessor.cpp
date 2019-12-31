@@ -18,9 +18,9 @@
  */
 
 
-#include "resaucernumbering.h"
+#include "variableprocessor.h"
 
-QString ResaucerNumbering::execute(QString name) {
+QString VariableProcessor::execute(QString name) {
     curr += step;
     return QString();
 }
