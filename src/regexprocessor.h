@@ -7,17 +7,14 @@
 
 class RegexProcessor : public ResaucerProcessor {
 public:
-    RegexProcessor(QString &startString, QString &endString, bool caseInsensitive);
+    RegexProcessor(QString &pattern, QString &repl, bool caseInsensitive);
 
     QString execute(QString name) override;
 
 private:
-    QString startString;
-    QString endString;
-    bool caseInsensitive = false;
-    QRegularExpression replaceRegex;
+    QString replace;
+    QRegularExpression regex;
 
-    void compile();
 };
 
 #endif // RESAUCERREPLACE_H

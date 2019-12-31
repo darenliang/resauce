@@ -22,20 +22,18 @@
 
 #include <utility>
 
-RegexProcessor::RegexProcessor(QString &start, QString &end, bool caseBool) {
-    startString = start;
-    endString = end;
-    caseInsensitive = caseBool;
-}
+RegexProcessor::RegexProcessor(QString &pattern, QString &repl, bool caseInsensitive) {
 
-void RegexProcessor::compile() {
-    replaceRegex.setPattern(startString);
+    replace = repl;
+
+    regex.setPattern(pattern);
+
     if (caseInsensitive) {
-        replaceRegex.setPatternOptions(QRegularExpression::PatternOption::CaseInsensitiveOption);
+        regex.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
     }
+
 }
 
 QString RegexProcessor::execute(QString name) {
-    compile();
-    return name.replace(replaceRegex, endString);
+    return name.replace(regex, replace);
 }
