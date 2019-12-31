@@ -38,6 +38,7 @@ HEADERS += \
     regexprocessor.h \
     resaucefileinfo.h \
     resaucefilemodel.h \
+    resaucefilter.h \
     resaucer.h \
     resaucerprocessor.h \
     state.h \
