@@ -18,24 +18,9 @@
  */
 
 
-#include "resaucerreplace.h"
+#include "variableprocessor.h"
 
-#include <utility>
-
-ResaucerReplace::ResaucerReplace(QString &start, QString &end, bool caseBool) {
-    startString = start;
-    endString = end;
-    caseInsensitive = caseBool;
-}
-
-void ResaucerReplace::compile() {
-    replaceRegex.setPattern(startString);
-    if (caseInsensitive) {
-        replaceRegex.setPatternOptions(QRegularExpression::PatternOption::CaseInsensitiveOption);
-    }
-}
-
-QString ResaucerReplace::execute(QString name) {
-    compile();
-    return name.replace(replaceRegex, endString);
+QString VariableProcessor::execute(QString name) {
+    curr += step;
+    return QString();
 }

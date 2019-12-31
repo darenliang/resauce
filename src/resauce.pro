@@ -20,14 +20,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     aboutdialog.cpp \
+    regexprocessor.cpp \
     resaucefileinfo.cpp \
     resaucefilemodel.cpp \
     resaucer.cpp \
-    resaucernumbering.cpp \
     resaucerprocessor.cpp \
-    resaucerreplace.cpp \
     state.cpp \
-    dirutil.cpp
+    dirutil.cpp \
+    variableprocessor.cpp
 
 HEADERS += \
     ResauceVariable.h \
@@ -35,14 +35,14 @@ HEADERS += \
     info.h \
     mainwindow.h \
     aboutdialog.h \
+    regexprocessor.h \
     resaucefileinfo.h \
     resaucefilemodel.h \
     resaucer.h \
-    resaucernumbering.h \
     resaucerprocessor.h \
-    resaucerreplace.h \
     state.h \
-    dirutil.h
+    dirutil.h \
+    variableprocessor.h
 
 FORMS += \
     mainwindow.ui \

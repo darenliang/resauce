@@ -18,9 +18,24 @@
  */
 
 
-#include "resaucernumbering.h"
+#include "regexprocessor.h"
 
-QString ResaucerNumbering::execute(QString name) {
-    curr += step;
-    return QString();
+#include <utility>
+
+RegexProcessor::RegexProcessor(QString &start, QString &end, bool caseBool) {
+    startString = start;
+    endString = end;
+    caseInsensitive = caseBool;
+}
+
+void ResaucerReplace::compile() {
+    replaceRegex.setPattern(startString);
+    if (caseInsensitive) {
+        replaceRegex.setPatternOptions(QRegularExpression::PatternOption::CaseInsensitiveOption);
+    }
+}
+
+QString RegexProcessor::execute(QString name) {
+    compile();
+    return name.replace(replaceRegex, endString);
 }

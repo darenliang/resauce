@@ -24,7 +24,7 @@
 
 #include "resaucerprocessor.h"
 
-class ResaucerNumbering : public ResaucerProcessor {
+class VariableProcessor : public ResaucerProcessor {
 public:
     QString execute(QString name) override;
 
