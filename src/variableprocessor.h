@@ -23,8 +23,6 @@
 
 #include "resaucerprocessor.h"
 
-#include <type_traits>
-
 template <typename T>
 struct VariableProcessor : public ResaucerProcessor {
 
