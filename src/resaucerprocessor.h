@@ -25,8 +25,6 @@
 
 class ResaucerProcessor {
 public:
-    virtual ~ResaucerProcessor() = 0;
-
     virtual QString execute(QString name) = 0;
 };
 

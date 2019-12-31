@@ -19,5 +19,3 @@
 
 
 #include "resaucerprocessor.h"
-
-ResaucerProcessor::~ResaucerProcessor() = default;

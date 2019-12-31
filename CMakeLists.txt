@@ -13,6 +13,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
+add_subdirectory(tests)
+
 add_executable(resauce
         src/main.cpp
         src/mainwindow.cpp

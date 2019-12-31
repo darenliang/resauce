@@ -22,16 +22,11 @@
 
 #include <utility>
 
+
 RegexProcessor::RegexProcessor(QString &pattern, QString &repl, bool caseInsensitive) {
-
     replace = repl;
-
-    regex.setPattern(pattern);
-
-    if (caseInsensitive) {
-        regex.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
-    }
-
+    setPattern(pattern);
+    setCaseInsensitive(caseInsensitive);
 }
 
 QString RegexProcessor::execute(QString name) {
