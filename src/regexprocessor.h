@@ -5,9 +5,9 @@
 #include <QtCore/QRegExp>
 #include "resaucerprocessor.h"
 
-class ResaucerReplace : public ResaucerProcessor {
+class RegexProcessor : public ResaucerProcessor {
 public:
-    ResaucerReplace(QString startString, QString endString, bool caseInsensitive);
+    RegexProcessor(QString startString, QString endString, bool caseInsensitive);
 
     QString execute(QString name) override;
 

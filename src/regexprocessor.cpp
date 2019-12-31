@@ -32,7 +32,7 @@ void RegexProcessor::compile() {
     QString tempCompile = templateRegex.replace("{{replaceString}}", startString);
     if (caseInsensitive) {
         tempCompile = templateRegex.replace("{{caseDisable}}", "(?i)")
-                .replace("{{caseEnable}}", "?-i");
+                .replace("{{caseEnable}}", "(?-i)");
     } else {
         tempCompile = templateRegex.replace("{{caseDisable}}", "")
                 .replace("{{caseEnable}}", "");
@@ -41,5 +41,6 @@ void RegexProcessor::compile() {
 }
 
 QString RegexProcessor::execute(QString name) {
+    compile();
     return name.replace(replaceRegex, endString);
 }
