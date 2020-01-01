@@ -149,23 +149,20 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="predicateTab">
          <attribute name="title">
           <string>Selection</string>
          </attribute>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QLineEdit" name="lineEdit">
           <property name="geometry">
            <rect>
-            <x>60</x>
-            <y>60</y>
-            <width>91</width>
+            <x>20</x>
+            <y>20</y>
+            <width>113</width>
             <height>30</height>
            </rect>
-          </property>
-          <property name="text">
-           <string>PushButton</string>
           </property>
          </widget>
         </widget>
@@ -176,8 +173,8 @@
          <widget class="QGroupBox" name="groupBox_4">
           <property name="geometry">
            <rect>
-            <x>80</x>
-            <y>70</y>
+            <x>40</x>
+            <y>40</y>
             <width>120</width>
             <height>80</height>
            </rect>
