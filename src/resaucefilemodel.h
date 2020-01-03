@@ -52,6 +52,8 @@ class ResauceFileModel : public QAbstractTableModel {
 
     void sort(int column, Qt::SortOrder order = Qt::AscendingOrder) override;
 
+    Qt::ItemFlags flags(const QModelIndex&) const override;
+
 public:
 
     ResauceFileModel(QVector<ResauceFilter*>*);

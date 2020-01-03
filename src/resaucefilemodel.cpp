@@ -28,7 +28,11 @@
 
 #include "extensionfilter.h"
 
-ResauceFileModel::ResauceFileModel(QVector<ResauceFilter*>* filters): QAbstractTableModel(), filters{filters} {}
+ResauceFileModel::ResauceFileModel(QVector<ResauceFilter*>* filters): QAbstractTableModel(), filters{filters} {
+
+    filters->append(new ExtensionFilter(".png"));
+
+}
 
 void ResauceFileModel::put(ResauceFileInfo info) {
     files.append(info);
@@ -159,11 +163,19 @@ int ResauceFileModel::rowCount(const QModelIndex&) const {
 
 }
 
+Qt::ItemFlags ResauceFileModel::flags(const QModelIndex& index) const {
+
+    auto x = this->files[index.row()];
+
+    return (filtered.contains(x)) ? Qt::ItemIsEnabled : Qt::NoItemFlags;
+
+}
+
 QVariant ResauceFileModel::data(const QModelIndex &index, int role) const {
 
     switch(role) {
         case Qt::DisplayRole: {
-            auto file = filtered[index.row()];
+            auto file = files[index.row()];
             switch(index.column()) { // Get data by column and row
                 case 0: return file.fileName();
                 case 1: return file.new_name;
