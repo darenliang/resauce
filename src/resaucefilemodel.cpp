@@ -84,7 +84,13 @@ void ResauceFileModel::dir_changed(const QModelIndex& current, const QModelIndex
                       QDir::NoDotAndDotDot | QDir::Files}; // Create a dir iterator for the selected folder
 
     while (iter.hasNext()) {
-        this->names().append(ResauceFileInfo(iter.next()));
+        r.files.append(ResauceFileInfo(iter.next()));
+    }
+
+    r.process();
+
+    for (auto f : r.files) {
+        files.append(f);
     }
 
     this->filter();
