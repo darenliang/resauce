@@ -95,50 +95,6 @@ void MainWindow::on_actionOpen_triggered() {
     setDirectory(folderPath);
 }
 
-// Handle folder selection in folder selection pane
-//void MainWindow::dirView_selection_change(const QModelIndex &current) {
-//    auto &fileList = State::getFileList();
-//    ui->fileView->setModel(&fileList);
-//    auto file = State::getDirectoryModel().fileInfo(current);
-//    qDebug() << file.absoluteFilePath();
-//    fileList.names().clear();
-
-//    Resaucer r;
-
-//    ResauceVariable x;
-
-//    x.name = "x";
-//    x.value = 1;
-//    x.incdec = 1;
-
-//    ResauceVariable s;
-
-//    s.name = "s";
-//    s.value = 1;
-//    s.incdec = 1;
-//    s.freq = 10;
-
-//    r.vars.append(x);
-//    r.vars.append(s);
-
-//    r._template = "Season {s} Episode {x}{.ext}";
-
-//    QDirIterator iter{file.absoluteFilePath(),
-//                      QDir::NoDotAndDotDot | QDir::Files}; // Create a dir iterator for the selected folder
-//    while (iter.hasNext()) {
-//        auto x = ResauceFileInfo(iter.next()); // Create file info
-//        r.files.append(x);
-//    }
-
-//    r.process();
-
-//    for (auto rfi : r.files) {
-//        fileList.put(rfi);
-//    }
-
-//    fileList.updateLayout();
-//}
-
 // Handle folder search on text edit
 void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath) {
     if (folderPath.isEmpty()) {

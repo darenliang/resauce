@@ -49,8 +49,6 @@ private slots:
 
     void on_actionOpen_triggered();
 
-//    void dirView_selection_change(const QModelIndex &current);
-
     void on_rootFolderSearch_textEdited(const QString &folderPath);
 
     void on_dirView_customContextMenuRequested(const QPoint &pos);
