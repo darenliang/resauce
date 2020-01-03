@@ -21,7 +21,8 @@
 #include "state.h"
 
 QFileSystemModel State::directoryModel;
-ResauceFileModel State::fileList;
+QVector<ResauceFilter*> State::filters;
+ResauceFileModel State::fileList(&filters);
 
 QFileSystemModel &State::getDirectoryModel() {
     return directoryModel;

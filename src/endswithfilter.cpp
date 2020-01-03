@@ -2,11 +2,11 @@
 
 EndsWithFilter::EndsWithFilter(QVector<QString> ends): ResauceFilter(), ends(ends) {}
 
-bool EndsWithFilter::predicate(QString &name) {
+bool EndsWithFilter::predicate(ResauceFileInfo info) {
 
     for (auto en : ends) {
 
-        if (name.endsWith(en)) {
+        if (info.fileName().endsWith(en)) {
 
             return true;
 

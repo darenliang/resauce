@@ -22,6 +22,7 @@
 #define QRESAUCEFILEMODEL_H
 
 #include "resaucefileinfo.h"
+#include "resaucefilter.h"
 
 #include <QAbstractTableModel>
 #include <QVariant>
@@ -30,9 +31,12 @@
 
 class ResauceFileModel : public QAbstractTableModel {
 
-Q_OBJECT
+    Q_OBJECT
 
     QVector<ResauceFileInfo> files;
+    QVector<ResauceFileInfo> filtered;
+
+    QVector<ResauceFilter*>* filters;
 
     QFileIconProvider icon_provider;
 
@@ -50,13 +54,24 @@ Q_OBJECT
 
 public:
 
+    ResauceFileModel(QVector<ResauceFilter*>*);
+
     void put(ResauceFileInfo info);
+
+//    void putFilter(ResauceFilter filter);
 
     ResauceFileInfo &get(int index);
 
     QVector<ResauceFileInfo> &names();
 
+public slots:
+
+    void dir_changed(const QModelIndex&, const QModelIndex&);
+
+    void filter();
+
     void updateLayout();
+
 };
 
 #endif // QRESAUCEFILEMODEL_H

@@ -1,12 +1,12 @@
-#include "startswithpredicate.h"
+#include "startswithfilter.h"
 
 StartsWithPredicate::StartsWithPredicate(QVector<QString> starts): ResauceFilter(), starts(starts) {}
 
-bool StartsWithPredicate::predicate(QString &name) {
+bool StartsWithPredicate::predicate(ResauceFileInfo info) {
 
     for (auto st : starts) {
 
-        if (name.startsWith(st)) {
+        if (info.fileName().startsWith(st)) {
             return true;
         }
 

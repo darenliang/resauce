@@ -12,8 +12,8 @@ RegexFilter::RegexFilter(QString& regex, bool caseInsensitive) {
 
 RegexFilter::RegexFilter(QRegularExpression& regex): regex(regex) {}
 
-bool RegexFilter::predicate(QString &name) {
+bool RegexFilter::predicate(ResauceFileInfo info) {
 
-    return regex.match(name).hasMatch();
+    return regex.match(info.fileName()).hasMatch();
 
 }

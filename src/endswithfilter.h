@@ -13,7 +13,7 @@ class EndsWithFilter : public ResauceFilter
 
 public:
     EndsWithFilter(QVector<QString> ends);
-    bool predicate(QString& name) override;
+    bool predicate(ResauceFileInfo info) override;
 };
 
 #endif // ENDSWITHFILTER_H

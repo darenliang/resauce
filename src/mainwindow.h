@@ -33,7 +33,8 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
-Q_OBJECT
+
+    Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -48,7 +49,7 @@ private slots:
 
     void on_actionOpen_triggered();
 
-    void dirView_selection_change(const QModelIndex &current);
+//    void dirView_selection_change(const QModelIndex &current);
 
     void on_rootFolderSearch_textEdited(const QString &folderPath);
 

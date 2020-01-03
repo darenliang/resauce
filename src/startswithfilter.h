@@ -13,7 +13,7 @@ class StartsWithPredicate : public ResauceFilter
     
 public:
     StartsWithPredicate(QVector<QString> starts);
-    bool predicate(QString& name) override;
+    bool predicate(ResauceFileInfo info) override;
 };
 
 #endif // STARTSWITHPREDICATE_H

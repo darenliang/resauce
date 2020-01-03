@@ -27,6 +27,7 @@
 #include <QtWidgets/QFileSystemModel>
 
 class State {
+    static QVector<ResauceFilter*> filters;
     static QFileSystemModel directoryModel;
     static ResauceFileModel fileList;
 public:

@@ -2,21 +2,15 @@
 
 ExtensionFilter::ExtensionFilter(QVector<QString>& extensions): extensions(extensions) {}
 
-ExtensionFilter::ExtensionFilter(QString& extension) {
+ExtensionFilter::ExtensionFilter(QString extension) {
     extensions.append(extension);
 }
 
-QString ExtensionFilter::ext(QString &name) {
-
-    return name.right( name.length() - name.lastIndexOf('.') );
-
-}
-
-bool ExtensionFilter::predicate(QString &name) {
+bool ExtensionFilter::predicate(ResauceFileInfo info) {
 
     for (auto ext : extensions) {
 
-        if (ExtensionFilter::ext(name) == ext) {
+        if (info.fileExtension() == ext) {
 
             return true; // The extension matches one of the accepted ones
 

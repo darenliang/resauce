@@ -33,14 +33,17 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    ui->fileView->setModel(&State::getFileList());
+
     ui->rootFolderSearch->setFocus();
     // Set default directory to be the user's home
     // This call is platform independent
     resetDirectory(false);
 
     // Make ui reactive to keyboard and mouse
-    connect(ui->dirView->selectionModel(), &QItemSelectionModel::currentChanged, this,
-            &MainWindow::dirView_selection_change);
+    QObject::connect(ui->dirView->selectionModel(), &QItemSelectionModel::currentChanged,
+                     &State::getFileList(), &ResauceFileModel::dir_changed);
+
 }
 
 MainWindow::~MainWindow() {
@@ -93,48 +96,48 @@ void MainWindow::on_actionOpen_triggered() {
 }
 
 // Handle folder selection in folder selection pane
-void MainWindow::dirView_selection_change(const QModelIndex &current) {
-    auto &fileList = State::getFileList();
-    ui->fileView->setModel(&fileList);
-    auto file = State::getDirectoryModel().fileInfo(current);
-    qDebug() << file.absoluteFilePath();
-    fileList.names().clear();
+//void MainWindow::dirView_selection_change(const QModelIndex &current) {
+//    auto &fileList = State::getFileList();
+//    ui->fileView->setModel(&fileList);
+//    auto file = State::getDirectoryModel().fileInfo(current);
+//    qDebug() << file.absoluteFilePath();
+//    fileList.names().clear();
 
-    Resaucer r;
+//    Resaucer r;
 
-    ResauceVariable x;
+//    ResauceVariable x;
 
-    x.name = "x";
-    x.value = 1;
-    x.incdec = 1;
+//    x.name = "x";
+//    x.value = 1;
+//    x.incdec = 1;
 
-    ResauceVariable s;
+//    ResauceVariable s;
 
-    s.name = "s";
-    s.value = 1;
-    s.incdec = 1;
-    s.freq = 10;
+//    s.name = "s";
+//    s.value = 1;
+//    s.incdec = 1;
+//    s.freq = 10;
 
-    r.vars.append(x);
-    r.vars.append(s);
+//    r.vars.append(x);
+//    r.vars.append(s);
 
-    r._template = "Season {s} Episode {x}{.ext}";
+//    r._template = "Season {s} Episode {x}{.ext}";
 
-    QDirIterator iter{file.absoluteFilePath(),
-                      QDir::NoDotAndDotDot | QDir::Files}; // Create a dir iterator for the selected folder
-    while (iter.hasNext()) {
-        auto x = ResauceFileInfo(iter.next()); // Create file info
-        r.files.append(x);
-    }
+//    QDirIterator iter{file.absoluteFilePath(),
+//                      QDir::NoDotAndDotDot | QDir::Files}; // Create a dir iterator for the selected folder
+//    while (iter.hasNext()) {
+//        auto x = ResauceFileInfo(iter.next()); // Create file info
+//        r.files.append(x);
+//    }
 
-    r.process();
+//    r.process();
 
-    for (auto rfi : r.files) {
-        fileList.put(rfi);
-    }
+//    for (auto rfi : r.files) {
+//        fileList.put(rfi);
+//    }
 
-    fileList.updateLayout();
-}
+//    fileList.updateLayout();
+//}
 
 // Handle folder search on text edit
 void MainWindow::on_rootFolderSearch_textEdited(const QString &folderPath) {

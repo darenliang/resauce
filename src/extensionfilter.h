@@ -10,12 +10,10 @@ class ExtensionFilter : public ResauceFilter
 
     QVector<QString> extensions;
 
-    static QString ext(QString& name);
-
 public:
     ExtensionFilter(QVector<QString>& extensions);
-    ExtensionFilter(QString& extension);
-    bool predicate(QString& name) override;
+    ExtensionFilter(QString extension);
+    bool predicate(ResauceFileInfo info) override;
 };
 
 #endif // EXTENSIONFILTER_H

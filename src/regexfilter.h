@@ -12,7 +12,7 @@ class RegexFilter : public ResauceFilter
 public:
     RegexFilter(QString& regex, bool caseInsensitive);
     RegexFilter(QRegularExpression& regex);
-    bool predicate(QString& name) override;
+    bool predicate(ResauceFileInfo info) override;
 };
 
 #endif // REGEXFILTER_H

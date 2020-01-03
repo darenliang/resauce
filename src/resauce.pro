@@ -28,7 +28,7 @@ SOURCES += \
     resaucefilemodel.cpp \
     resaucer.cpp \
     resaucerprocessor.cpp \
-    startswithpredicate.cpp \
+    startswithfilter.cpp \
     state.cpp \
     dirutil.cpp \
     variableprocessor.cpp
@@ -48,7 +48,7 @@ HEADERS += \
     resaucefilter.h \
     resaucer.h \
     resaucerprocessor.h \
-    startswithpredicate.h \
+    startswithfilter.h \
     state.h \
     dirutil.h \
     variableprocessor.h
