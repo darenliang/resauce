@@ -34,6 +34,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    ui->fileView->setModel(&State::getFileList());
+
     ui->rootFolderSearch->setFocus();
     // Set default directory to be the user's home
     // This call is platform independent
@@ -97,7 +99,6 @@ void MainWindow::on_actionOpen_triggered() {
 // Handle folder selection in folder selection pane
 void MainWindow::dirView_selection_change(const QModelIndex &current) {
     auto &fileList = State::getFileList();
-    ui->fileView->setModel(&fileList);
     auto file = State::getDirectoryModel().fileInfo(current);
     qDebug() << file.absoluteFilePath();
     fileList.names().clear();
