@@ -157,7 +157,45 @@
          </attribute>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
-           <widget class="QTableView" name="filterTable"/>
+           <layout class="QHBoxLayout" name="predicateH">
+            <item>
+             <widget class="QTableView" name="filterTable"/>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="predicateButtonV">
+              <item>
+               <widget class="QToolButton" name="addPredicate">
+                <property name="text">
+                 <string>...</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-add"/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="editPredicate">
+                <property name="text">
+                 <string>...</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="emblem-system"/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="removePredicate">
+                <property name="text">
+                 <string>...</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-remove"/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -237,7 +275,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
