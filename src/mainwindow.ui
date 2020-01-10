@@ -179,7 +179,7 @@
                  <string>...</string>
                 </property>
                 <property name="icon">
-                 <iconset theme="emblem-system"/>
+                 <iconset theme="preferences-system"/>
                 </property>
                </widget>
               </item>
